@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People | Ogden Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf8f3; --bg2: #f0ede4; --ink: #1a1a18; --ink2: #4a4a42;
+      --accent: #2d6a4f; --accent2: #52b788; --border: rgba(26,26,24,0.12);
+      --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.7; }
+    nav {
+      position: sticky; top: 0; background: rgba(250,248,243,0.94);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+      padding: 0 2rem; display: flex; align-items: center;
+      justify-content: space-between; height: 64px; z-index: 100;
+    }
+    .nav-brand { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--ink2); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .page-header { padding: 5rem 6rem 3rem; border-bottom: 1px solid var(--border); }
+    .page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+    .page-title { font-family: var(--serif); font-size: 2.8rem; }
+
+    .people-section { padding: 4rem 6rem; }
+    .people-section h2 { font-family: var(--serif); font-size: 1.4rem; color: var(--ink2); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+
+    .pi-card {
+      display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
+      margin-bottom: 4rem; align-items: start;
+    }
+    .pi-photo {
+      background: linear-gradient(135deg, var(--accent) 0%, #1b4332 100%);
+      aspect-ratio: 1; border-radius: 4px; display: flex;
+      align-items: center; justify-content: center; font-size: 4rem;
+    }
+    .pi-name { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.25rem; }
+    .pi-title { color: var(--accent); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
+    .pi-bio { color: var(--ink2); font-weight: 300; margin-bottom: 1.5rem; }
+
+    .student-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .student-card { border: 1px solid var(--border); padding: 1.5rem; border-radius: 3px; }
+    .student-photo { background: var(--bg2); aspect-ratio: 1; border-radius: 3px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .student-name { font-family: var(--serif); font-size: 1.05rem; margin-bottom: 0.25rem; }
+    .student-role { font-size: 0.8rem; color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .edit-note {
+      background: #fff3cd; border: 1px solid #ffc107; border-radius: 3px;
+      padding: 1rem 1.5rem; font-size: 0.875rem; color: #856404;
+      margin-bottom: 2rem;
+    }
+
+    footer { background: #0f1f18; color: rgba(255,255,255,0.55); padding: 2rem 6rem; font-size: 0.875rem; display: flex; justify-content: space-between; }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .page-header, .people-section { padding: 3rem 1.5rem; }
+      .pi-card { grid-template-columns: 1fr; }
+      .student-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="join.html">Join</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-label">The Team</div>
+    <h1 class="page-title">Lab Members</h1>
+  </div>
+
+  <div class="people-section">
+    <div class="edit-note">
+      ✏️ <strong>To customize this page:</strong> Replace the placeholder text and emoji icons below with your actual photo, bio, and student names. Upload photos to an <code>assets/img/</code> folder in your repository.
+    </div>
+
+    <h2>Principal Investigator</h2>
+    <div class="pi-card">
+      <div class="pi-photo">🧑‍🔬</div>
+      <div>
+        <div class="pi-name">Dr. Heath Ogden</div>
+        <div class="pi-title">Associate Professor of Biology · Utah Valley University</div>
+        <p class="pi-bio">
+          Dr. Ogden's research focuses on phylogenetic insect research, bioinformatics, and pedagogy.
+          He investigates higher-level basal pterygote and ephemeropteran relationships using molecular
+          and morphological data, and uses these phylogenies to evaluate evolutionary processes.
+          He is also passionate about biology education research and evolution acceptance in students.
+        </p>
+        <p class="pi-bio">
+          📍 Room SB 243 &nbsp;·&nbsp; (801) 863-8511 &nbsp;·&nbsp; Utah Valley University
+        </p>
+      </div>
+    </div>
+
+    <h2>Current Students</h2>
+    <div class="student-grid">
+      <!-- Add your actual students here. Copy and paste more cards as needed. -->
+      <div class="student-card">
+        <div class="student-photo">👩‍🎓</div>
+        <div class="student-name">Student Name</div>
+        <div class="student-role">Undergraduate Researcher</div>
+      </div>
+      <div class="student-card">
+        <div class="student-photo">👨‍🎓</div>
+        <div class="student-name">Student Name</div>
+        <div class="student-role">Lab Manager</div>
+      </div>
+      <div class="student-card">
+        <div class="student-photo">👩‍🎓</div>
+        <div class="student-name">Student Name</div>
+        <div class="student-role">Undergraduate Researcher</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© Ogden Lab · Utah Valley University</span>
+    <a href="index.html">← Back to Home</a>
+  </footer>
+</body>
+</html>

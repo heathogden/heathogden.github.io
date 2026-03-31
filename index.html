@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ogden Lab | Utah Valley University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf8f3;
+      --bg2: #f0ede4;
+      --ink: #1a1a18;
+      --ink2: #4a4a42;
+      --accent: #2d6a4f;
+      --accent2: #52b788;
+      --gold: #c9a84c;
+      --border: rgba(26,26,24,0.12);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,248,243,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink2);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: var(--accent2);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--ink2);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #1f4f3a; transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--accent) 0%, #1b4332 100%);
+      opacity: 0.85;
+    }
+    .hero-image-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #52b788 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Decorative insect SVG in hero */
+    .hero-svg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+    .hero-svg svg {
+      width: 380px;
+      height: 380px;
+      opacity: 0.18;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      z-index: 2;
+      display: flex;
+      gap: 2.5rem;
+    }
+    .stat {
+      color: #fff;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 0.25rem;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 6rem; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    /* RESEARCH */
+    #research {
+      background: var(--bg);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .research-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      transition: background 0.2s;
+    }
+    .research-card:hover { background: #e8f5e9; }
+
+    .research-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+    }
+
+    .research-card h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .research-card p {
+      font-size: 0.9rem;
+      color: var(--ink2);
+      font-weight: 300;
+    }
+
+    /* NEWS */
+    #news {
+      background: var(--bg2);
+    }
+
+    .news-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1.5px solid var(--border);
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .news-item:hover .news-item-title { color: var(--accent); }
+
+    .news-date {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      padding-top: 0.15rem;
+      font-weight: 500;
+    }
+
+    .news-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .news-item-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .news-item-sub {
+      font-size: 0.875rem;
+      color: var(--ink2);
+      font-weight: 300;
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    #projects .section-label { color: var(--accent2); }
+    #projects .section-title { color: #fff; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--ink);
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s;
+    }
+    .project-card:hover { background: #2a2a26; }
+
+    .project-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.08);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .project-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+    }
+
+    /* JOIN */
+    #join {
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .join-visual {
+      background: linear-gradient(135deg, var(--accent) 0%, #1b4332 100%);
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+    }
+
+    .join-text p {
+      font-size: 1.05rem;
+      color: var(--ink2);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CONTACT / FOOTER */
+    footer {
+      background: #0f1f18;
+      color: rgba(255,255,255,0.7);
+      padding: 4rem 6rem 3rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-brand span { color: var(--accent2); }
+
+    footer p, footer address { font-size: 0.875rem; font-style: normal; line-height: 1.8; }
+
+    .footer-heading {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 0.5rem; }
+    footer ul a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    footer ul a:hover { color: var(--accent2); }
+
+    .footer-bottom {
+      background: #0a1510;
+      padding: 1.25rem 6rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-text > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-text > *:nth-child(3) { animation-delay: 0.35s; }
+    .hero-text > *:nth-child(4) { animation-delay: 0.5s; }
+
+    /* DIVIDER */
+    .divider {
+      width: 48px; height: 2px;
+      background: var(--accent2);
+      margin-bottom: 2rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { padding: 5rem 2rem 3rem; }
+      .hero-image { height: 320px; }
+
+      section { padding: 4rem 2rem; }
+
+      .research-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+
+      #join { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+
+      footer { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 2rem; }
+      .footer-bottom { padding: 1rem 2rem; flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="join.html">Join</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Utah Valley University · Department of Biology</div>
+      <h1>Unraveling the <em>evolution</em> of insects &amp; genomes</h1>
+      <p class="hero-sub">
+        The Ogden Lab uses phylogenomics, morphology, and bioinformatics to investigate insect evolution — with a special focus on mayflies and the forces that shape life's tree.
+      </p>
+      <div class="hero-ctas">
+        <a href="research.html" class="btn-primary">Our Research</a>
+        <a href="join.html" class="btn-outline">Join the Lab</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-placeholder"></div>
+      <!-- Decorative wing/insect SVG -->
+      <div class="hero-svg">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stylized mayfly silhouette -->
+          <ellipse cx="100" cy="105" rx="4" ry="40" fill="white"/>
+          <!-- Wings -->
+          <path d="M100 80 Q60 40 20 60 Q50 90 96 92Z" fill="white"/>
+          <path d="M100 80 Q140 40 180 60 Q150 90 104 92Z" fill="white"/>
+          <path d="M100 100 Q70 80 45 90 Q65 105 98 103Z" fill="white"/>
+          <path d="M100 100 Q130 80 155 90 Q135 105 102 103Z" fill="white"/>
+          <!-- Tails -->
+          <line x1="96" y1="145" x2="85" y2="175" stroke="white" stroke-width="1.5"/>
+          <line x1="100" y1="145" x2="100" y2="178" stroke="white" stroke-width="1.5"/>
+          <line x1="104" y1="145" x2="115" y2="175" stroke="white" stroke-width="1.5"/>
+          <!-- Head -->
+          <circle cx="100" cy="68" r="8" fill="white"/>
+        </svg>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Years Research</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10</div>
+          <div class="stat-label">Active Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Research Areas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH FOCUS -->
+  <section id="research">
+    <div class="section-label">What we study</div>
+    <h2 class="section-title">Three pillars of inquiry</h2>
+    <div class="divider"></div>
+    <p style="max-width:600px; color:var(--ink2); font-weight:300; font-size:1.02rem;">
+      Our work sits at the intersection of evolutionary biology, bioinformatics, and education research — asking questions that range from the branching of the mayfly tree of life to how students accept evolution.
+    </p>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-card-icon">🦟</div>
+        <h3>Insect Phylogenomics &amp; Evolution</h3>
+        <p>We develop well-supported phylogenetic hypotheses for basal pterygotes and Ephemeroptera using molecular and morphological data, then use these trees to evaluate evolutionary processes including the origin of flight, mayfly gills, tusks, and body form.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-card-icon">🧬</div>
+        <h3>Bioinformatics &amp; Sequence Analysis</h3>
+        <p>We investigate sequence alignment accuracy, topology inference, indel models, and concurrent analysis methodologies — improving the computational tools that underpin all of comparative biology.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-card-icon">📚</div>
+        <h3>Pedagogy &amp; Evolution Education</h3>
+        <p>We study flipped classrooms, online vs. face-to-face learning, and factors that influence evolution acceptance among students — and develop evidence-based classroom interventions to improve outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONGOING PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Active work</div>
+    <h2 class="section-title">Ongoing Research Projects</h2>
+    <div class="divider" style="background: var(--accent2);"></div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <h3>Phylogenetics and Evolution of Mayflies (Ephemeroptera)</h3>
+        <p>Comprehensive multi-locus and morphological study of the mayfly tree of life.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <h3>Phylogeny of Coloburiscidae</h3>
+        <p>Resolving relationships within this understudied basal mayfly family.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <h3>Phylogeny of Siphlonuridae</h3>
+        <p>Investigating the minnow mayflies, including novel transcriptomic data.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <h3>Carnivorous Mayflies (Ameletopsidae)</h3>
+        <p>Resolving the evolutionary placement of this remarkable predatory lineage.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">05</div>
+        <h3>Opsin Genes in Mayflies</h3>
+        <p>Characterizing opsin diversity using transcriptome data to understand vision evolution.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">06</div>
+        <h3>Insects of Capitol Reef National Park</h3>
+        <p>Ongoing natural history catalog of the insect fauna of Capitol Reef NP, Utah.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">07</div>
+        <h3>Evolution Acceptance in Students</h3>
+        <p>Studying and improving evolution acceptance in general biology and major students through evidence-based interventions including hominin skull labs.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-num">08</div>
+        <h3>Online vs. Face-to-Face Instruction</h3>
+        <p>Comparative study of learning outcomes across different instructional modalities in biology courses.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section id="news">
+    <div class="section-label">Lab Updates</div>
+    <h2 class="section-title">In the News</h2>
+    <div class="divider"></div>
+
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-date">2023</div>
+        <div>
+          <span class="news-tag">Publication</span>
+          <div class="news-item-title">Field Guide to the Insects Published!</div>
+          <div class="news-item-sub">After years of collecting and documenting, our field guide is complete. Contact Dr. Ogden for more information.</div>
+        </div>
+      </div>
+      <a class="news-item" href="https://www.livescience.com/animals/which-animal-has-the-shortest-life-span" target="_blank" rel="noopener">
+        <div class="news-date">2023</div>
+        <div>
+          <span class="news-tag">Media</span>
+          <div class="news-item-title">Live Science Interview</div>
+          <div class="news-item-sub">Dr. Ogden was featured answering: "Which animal has the shortest lifespan?" — with mayflies at the center of the story.</div>
+        </div>
+      </a>
+      <a class="news-item" href="https://www.uvu.edu/news/2023/02/2023_02_07_uvuwitway_vancouver.html" target="_blank" rel="noopener">
+        <div class="news-date">Nov 2022</div>
+        <div>
+          <span class="news-tag">Conference</span>
+          <div class="news-item-title">Entomological Society of America — Vancouver</div>
+          <div class="news-item-sub">Lab attended ESA 2022. Kyri Foreman earned 1st place in the Student Competition.</div>
+        </div>
+      </a>
+      <div class="news-item">
+        <div class="news-date">Oct 2019</div>
+        <div>
+          <span class="news-tag">Award</span>
+          <div class="news-item-title">UVU Showcase — Talia Backman Takes 2nd</div>
+          <div class="news-item-sub">Lab Manager Talia Backman won 2nd place in Life Science for research on the Phylogenetic Relationships of Minnow Mayflies (Siphlonuridae).</div>
+        </div>
+      </div>
+      <a class="news-item" href="http://www.uvureview.com/recent/news/religion-science-dont-need-to-conflict-says-ogden/" target="_blank" rel="noopener">
+        <div class="news-date">2017</div>
+        <div>
+          <span class="news-tag">Media</span>
+          <div class="news-item-title">Darwin Day 2017</div>
+          <div class="news-item-sub">Dr. Ogden speaks on the relationship between religion and science — featured in UVU Review.</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- JOIN THE LAB -->
+  <section id="join">
+    <div class="join-visual">🪲</div>
+    <div class="join-text">
+      <div class="section-label">Get Involved</div>
+      <h2 class="section-title">Interested in joining the lab?</h2>
+      <div class="divider"></div>
+      <p>We welcome undergraduate and graduate students who are curious about insect evolution, bioinformatics, or biology education research. No prior experience is required — just enthusiasm and a willingness to learn.</p>
+      <p>Projects range from field collecting and specimen identification to phylogenomic data analysis and classroom research design.</p>
+      <a href="join.html" class="btn-primary">Learn More &amp; Apply</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Ogden <span>Lab</span></div>
+      <p>Phylogenomics, bioinformatics, and evolution education research at Utah Valley University.</p>
+      <br/>
+      <address>
+        Department of Biology<br/>
+        Utah Valley University<br/>
+        800 W University Pkwy, Orem, UT 84058<br/>
+        Room SB 243<br/>
+        (801) 863-8511
+      </address>
+    </div>
+    <div>
+      <div class="footer-heading">Navigation</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="people.html">Lab Members</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="join.html">Join the Lab</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Profiles</div>
+      <ul>
+        <li><a href="https://www.uvu.edu/college-of-science/biology/" target="_blank">UVU Biology</a></li>
+        <li><a href="https://youtu.be/9E6Xkcqr0MA" target="_blank">Lab Video</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© Ogden Lab · Utah Valley University</span>
+    <span>Built with GitHub Pages</span>
+  </div>
+
+</body>
+</html>

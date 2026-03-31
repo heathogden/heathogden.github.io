@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the Lab | Ogden Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf8f3; --bg2: #f0ede4; --ink: #1a1a18; --ink2: #4a4a42;
+      --accent: #2d6a4f; --accent2: #52b788; --border: rgba(26,26,24,0.12);
+      --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.7; }
+    nav {
+      position: sticky; top: 0; background: rgba(250,248,243,0.94);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+      padding: 0 2rem; display: flex; align-items: center;
+      justify-content: space-between; height: 64px; z-index: 100;
+    }
+    .nav-brand { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--ink2); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .page-header {
+      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+      color: #fff; padding: 6rem 6rem 4rem;
+    }
+    .page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+    .page-title { font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem; }
+    .page-sub { font-size: 1.1rem; opacity: 0.8; max-width: 540px; font-weight: 300; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 5rem 2rem; }
+
+    h2 { font-family: var(--serif); font-size: 1.6rem; margin: 3rem 0 1rem; color: var(--ink); }
+    p { color: var(--ink2); font-weight: 300; margin-bottom: 1rem; font-size: 1.02rem; }
+    ul { color: var(--ink2); font-weight: 300; padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .contact-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 2rem 2.5rem; border-radius: 3px; margin-top: 3rem;
+    }
+    .contact-box h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .contact-box a { color: var(--accent); }
+
+    footer { background: #0f1f18; color: rgba(255,255,255,0.55); padding: 2rem 6rem; font-size: 0.875rem; display: flex; justify-content: space-between; }
+    footer a { color: var(--accent2); text-decoration: none; }
+    @media (max-width: 768px) {
+      .page-header { padding: 4rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="join.html">Join</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-label">Prospective Students</div>
+    <h1 class="page-title">Join the Ogden Lab</h1>
+    <p class="page-sub">We welcome curious, motivated undergraduate and graduate students who want to do real research in insect evolution, bioinformatics, or science education.</p>
+  </div>
+
+  <div class="content">
+    <h2>What We're Looking For</h2>
+    <p>No prior research experience is required. What matters most is curiosity about evolutionary biology or bioinformatics, and a willingness to commit time and effort to a project. Students of all backgrounds are welcome.</p>
+
+    <h2>Available Projects</h2>
+    <ul>
+      <li>Phylogenomics of mayflies (Ephemeroptera) — molecular data analysis</li>
+      <li>Insect collecting and natural history at Capitol Reef National Park</li>
+      <li>Bioinformatics pipeline development and sequence analysis</li>
+      <li>Evolution acceptance education research — classroom-based studies</li>
+      <li>Opsin gene characterization using transcriptome data</li>
+    </ul>
+
+    <h2>What Students Gain</h2>
+    <ul>
+      <li>Authentic research experience — real data, real questions, real results</li>
+      <li>Opportunity to co-author publications and present at conferences</li>
+      <li>Mentorship for graduate school and career planning</li>
+      <li>Skills in bioinformatics, phylogenetics, field collecting, and more</li>
+    </ul>
+
+    <h2>How to Apply</h2>
+    <p>Send Dr. Ogden an email introducing yourself. Include:</p>
+    <ul>
+      <li>Your year and major</li>
+      <li>Why you're interested in the lab</li>
+      <li>Which project area interests you most</li>
+      <li>Your availability (hours/week)</li>
+    </ul>
+
+    <div class="contact-box">
+      <h3>Contact Dr. Ogden</h3>
+      <p>
+        <strong>Office:</strong> SB 243, Utah Valley University<br/>
+        <strong>Phone:</strong> (801) 863-8511<br/>
+        <strong>Email:</strong> <a href="mailto:heath.ogden@uvu.edu">heath.ogden@uvu.edu</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <span>© Ogden Lab · Utah Valley University</span>
+    <a href="index.html">← Back to Home</a>
+  </footer>
+</body>
+</html>
