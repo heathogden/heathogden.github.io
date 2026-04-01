@@ -7,53 +7,83 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #faf8f3; --bg2: #f0ede4; --ink: #1a1a18; --ink2: #4a4a42;
-      --accent: #2d6a4f; --accent2: #52b788; --border: rgba(26,26,24,0.12);
-      --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.7; }
-    nav {
-      position: sticky; top: 0; background: rgba(250,248,243,0.94);
-      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
-      padding: 0 2rem; display: flex; align-items: center;
-      justify-content: space-between; height: 64px; z-index: 100;
-    }
-    .nav-brand { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
-    .nav-brand span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--ink2); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-
-    .page-header {
-      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
-      color: #fff; padding: 6rem 6rem 4rem;
-    }
-    .page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
-    .page-title { font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem; }
-    .page-sub { font-size: 1.1rem; opacity: 0.8; max-width: 540px; font-weight: 300; }
-
-    .content { max-width: 760px; margin: 0 auto; padding: 5rem 2rem; }
-
-    h2 { font-family: var(--serif); font-size: 1.6rem; margin: 3rem 0 1rem; color: var(--ink); }
-    p { color: var(--ink2); font-weight: 300; margin-bottom: 1rem; font-size: 1.02rem; }
-    ul { color: var(--ink2); font-weight: 300; padding-left: 1.5rem; margin-bottom: 1rem; }
-    li { margin-bottom: 0.5rem; }
-
-    .contact-box {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      padding: 2rem 2.5rem; border-radius: 3px; margin-top: 3rem;
-    }
-    .contact-box h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; }
-    .contact-box a { color: var(--accent); }
-
-    footer { background: #0f1f18; color: rgba(255,255,255,0.55); padding: 2rem 6rem; font-size: 0.875rem; display: flex; justify-content: space-between; }
-    footer a { color: var(--accent2); text-decoration: none; }
-    @media (max-width: 768px) {
-      .page-header { padding: 4rem 1.5rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+    :root{--bg:#faf8f3;--bg2:#f0ede4;--ink:#1a1a18;--ink2:#4a4a42;--accent:#2d6a4f;--accent2:#52b788;--gold:#c9a84c;--border:rgba(26,26,24,0.12);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
+    nav{position:sticky;top:0;background:rgba(250,248,243,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:100;}
+    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;}
+    .nav-brand span{color:var(--accent);}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--accent);}
+    .hero{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:5rem 6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+    .hero h1{font-family:var(--serif);font-size:2.8rem;line-height:1.15;margin-bottom:1.25rem;}
+    .hero h1 em{font-style:italic;color:var(--accent2);}
+    .hero p{opacity:0.8;font-weight:300;font-size:1.02rem;line-height:1.8;}
+    .hero-stats{display:flex;flex-direction:column;gap:1.25rem;}
+    .hstat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:1.25rem 1.5rem;display:flex;gap:1.25rem;align-items:flex-start;}
+    .hstat-icon{font-size:1.4rem;flex-shrink:0;}
+    .hstat-title{font-weight:500;font-size:0.95rem;margin-bottom:0.2rem;}
+    .hstat-body{font-size:0.82rem;opacity:0.65;font-weight:300;line-height:1.5;}
+    .benefits{padding:5rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    .section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+    .benefits h2{font-family:var(--serif);font-size:2.2rem;line-height:1.2;margin-bottom:1.25rem;}
+    .benefits p{color:var(--ink2);font-weight:300;margin-bottom:1rem;font-size:0.97rem;}
+    .blist{list-style:none;display:flex;flex-direction:column;gap:0.85rem;}
+    .bitem{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--bg2);border-radius:3px;border-left:3px solid var(--accent2);}
+    .bicon{font-size:1.1rem;flex-shrink:0;margin-top:0.1rem;}
+    .btitle{font-weight:500;font-size:0.88rem;margin-bottom:0.1rem;}
+    .bbody{font-size:0.8rem;color:var(--ink2);font-weight:300;line-height:1.5;}
+    .looking{background:var(--ink);color:#fff;padding:4rem 6rem;}
+    .looking h2{font-family:var(--serif);font-size:1.8rem;color:#fff;margin-bottom:0.5rem;}
+    .looking-sub{color:rgba(255,255,255,0.55);margin-bottom:2.5rem;font-weight:300;}
+    .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+    .ccard{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:1.5rem;}
+    .cicon{font-size:1.3rem;margin-bottom:0.75rem;}
+    .ctitle{font-weight:500;font-size:0.88rem;color:#fff;margin-bottom:0.35rem;}
+    .cbody{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.55;}
+    .notrequired{margin-top:2rem;padding:1.25rem 1.5rem;background:rgba(82,183,136,0.1);border:1px solid rgba(82,183,136,0.25);border-radius:3px;font-size:0.875rem;color:rgba(255,255,255,0.7);}
+    .notrequired strong{color:var(--accent2);}
+    .appwrap{padding:5rem 6rem;max-width:880px;margin:0 auto;}
+    .appwrap h2{font-family:var(--serif);font-size:2.2rem;margin-bottom:0.75rem;}
+    .appintro{color:var(--ink2);font-weight:300;margin-bottom:2.5rem;font-size:0.95rem;line-height:1.75;padding:1.25rem 1.5rem;background:var(--bg2);border-left:3px solid var(--accent);border-radius:2px;}
+    .fsec{margin-bottom:2.5rem;}
+    .fsec-title{font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;}
+    .fg{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1.25rem;}
+    .fg label{font-size:0.82rem;font-weight:500;color:var(--ink);}
+    .fg .hint{font-size:0.73rem;color:var(--ink2);font-weight:300;line-height:1.4;}
+    .fg input,.fg select,.fg textarea{width:100%;padding:0.72rem 1rem;border:1.5px solid var(--border);border-radius:3px;font-family:var(--sans);font-size:0.88rem;color:var(--ink);background:var(--bg);transition:border-color 0.2s;outline:none;}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent);}
+    .fg textarea{resize:vertical;min-height:110px;line-height:1.6;}
+    .fg textarea.tall{min-height:145px;}
+    .cc{font-size:0.7rem;color:var(--ink2);text-align:right;margin-top:0.2rem;}
+    .commitbox{background:var(--bg2);border:1.5px solid var(--border);border-radius:4px;padding:1.75rem;margin-bottom:2rem;}
+    .commitbox-title{font-weight:500;font-size:0.92rem;margin-bottom:1rem;}
+    .citem{display:flex;gap:0.85rem;align-items:flex-start;margin-bottom:0.7rem;}
+    .citem:last-child{margin-bottom:0;}
+    .citem input[type="checkbox"]{width:18px;height:18px;margin-top:0.15rem;flex-shrink:0;accent-color:var(--accent);cursor:pointer;}
+    .citem label{font-size:0.855rem;color:var(--ink2);cursor:pointer;line-height:1.5;}
+    .subbtn{width:100%;padding:1rem;background:var(--accent);color:#fff;border:none;border-radius:3px;font-family:var(--sans);font-size:0.88rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+    .subbtn:hover{background:#1f4f3a;}
+    .subbtn:disabled{background:#aaa;cursor:not-allowed;}
+    .fnote{font-size:0.77rem;color:var(--ink2);text-align:center;margin-top:1rem;line-height:1.5;}
+    .successmsg{display:none;background:#e8f5e9;border:1.5px solid var(--accent2);border-radius:4px;padding:2rem;text-align:center;margin-top:1.5rem;}
+    .successmsg h3{font-family:var(--serif);font-size:1.4rem;color:var(--accent);margin-bottom:0.5rem;}
+    .successmsg p{font-size:0.9rem;color:var(--ink2);}
+    footer{background:#0f1f18;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
+    footer a{color:var(--accent2);text-decoration:none;}
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;padding:4rem 1.5rem 3rem;gap:2.5rem;}
+      .benefits{grid-template-columns:1fr;padding:3rem 1.5rem;}
+      .looking{padding:3rem 1.5rem;}
+      .cgrid{grid-template-columns:1fr;}
+      .appwrap{padding:3rem 1.5rem;}
+      .frow{grid-template-columns:1fr;}
+      footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
+      .nav-links{gap:0.75rem;}
     }
   </style>
 </head>
@@ -65,59 +95,206 @@
       <li><a href="people.html">People</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="publications.html">Publications</a></li>
+      <li><a href="presentations.html">Presentations</a></li>
+      <li><a href="photos.html">Photos</a></li>
       <li><a href="join.html">Join</a></li>
     </ul>
   </nav>
 
-  <div class="page-header">
-    <div class="page-label">Prospective Students</div>
-    <h1 class="page-title">Join the Ogden Lab</h1>
-    <p class="page-sub">We welcome curious, motivated undergraduate and graduate students who want to do real research in insect evolution, bioinformatics, or science education.</p>
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Prospective Students</div>
+      <h1>Do real science.<br/><em>Starting now.</em></h1>
+      <p>The Ogden Lab is built on undergraduate research. We don't treat students as lab assistants — we treat them as scientists. You'll have your own project, present at conferences, and leave with skills that open doors to graduate school and careers in science.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-icon">🏆</div><div><div class="hstat-title">Conference Presentations</div><div class="hstat-body">Our undergraduates present at national meetings — ESA, UCUR, Evolution — often in their first or second year.</div></div></div>
+      <div class="hstat"><div class="hstat-icon">📄</div><div><div class="hstat-title">Published Co-Authors</div><div class="hstat-body">Many lab alumni are published co-authors on peer-reviewed papers before they graduate.</div></div></div>
+      <div class="hstat"><div class="hstat-icon">🎓</div><div><div class="hstat-title">Graduate School Pathways</div><div class="hstat-body">Dozens of Ogden Lab alumni have gone on to PhD programs, medical school, and professional science careers.</div></div></div>
+    </div>
   </div>
 
-  <div class="content">
-    <h2>What We're Looking For</h2>
-    <p>No prior research experience is required. What matters most is curiosity about evolutionary biology or bioinformatics, and a willingness to commit time and effort to a project. Students of all backgrounds are welcome.</p>
-
-    <h2>Available Projects</h2>
-    <ul>
-      <li>Phylogenomics of mayflies (Ephemeroptera) — molecular data analysis</li>
-      <li>Insect collecting and natural history at Capitol Reef National Park</li>
-      <li>Bioinformatics pipeline development and sequence analysis</li>
-      <li>Evolution acceptance education research — classroom-based studies</li>
-      <li>Opsin gene characterization using transcriptome data</li>
+  <div class="benefits">
+    <div>
+      <div class="section-label">What you gain</div>
+      <h2>A genuine research experience</h2>
+      <p>Most undergraduates never do real science. In the Ogden Lab, you will. From your first semester you'll be working on actual research problems — not practice problems, not busy work — in insect evolution, bioinformatics, or education research.</p>
+      <p>Dr. Ogden has mentored over 87 undergraduates and knows that the best researchers often start with zero experience. What makes the difference is curiosity, reliability, and a willingness to learn.</p>
+    </div>
+    <ul class="blist">
+      <li class="bitem"><span class="bicon">🔬</span><div><div class="btitle">Your own research project</div><div class="bbody">Not pipetting for someone else. You'll own a question, collect data, and interpret results.</div></div></li>
+      <li class="bitem"><span class="bicon">🧬</span><div><div class="btitle">Bioinformatics &amp; lab skills</div><div class="bbody">Linux, phylogenetic software, sequence analysis, specimen handling — real tools used in real science.</div></div></li>
+      <li class="bitem"><span class="bicon">🎤</span><div><div class="btitle">Conference presentations</div><div class="bbody">ESA, UCUR, UVU Showcase. You'll learn to present your work to scientific audiences.</div></div></li>
+      <li class="bitem"><span class="bicon">📝</span><div><div class="btitle">Publication opportunities</div><div class="bbody">Strong projects become papers. Several undergraduates in this lab are published co-authors.</div></div></li>
+      <li class="bitem"><span class="bicon">🗺️</span><div><div class="btitle">Field work</div><div class="bbody">Insect collecting at Capitol Reef National Park and across Utah.</div></div></li>
+      <li class="bitem"><span class="bicon">🤝</span><div><div class="btitle">Mentorship for your future</div><div class="bbody">Dr. Ogden writes strong letters of recommendation and actively helps students get into graduate programs.</div></div></li>
     </ul>
+  </div>
 
-    <h2>What Students Gain</h2>
-    <ul>
-      <li>Authentic research experience — real data, real questions, real results</li>
-      <li>Opportunity to co-author publications and present at conferences</li>
-      <li>Mentorship for graduate school and career planning</li>
-      <li>Skills in bioinformatics, phylogenetics, field collecting, and more</li>
-    </ul>
+  <div class="looking">
+    <h2>What we look for</h2>
+    <p class="looking-sub">We're selective — but not in the way you might think.</p>
+    <div class="cgrid">
+      <div class="ccard"><div class="cicon">🔍</div><div class="ctitle">Genuine curiosity</div><div class="cbody">You find insects, genomes, or evolution genuinely interesting — not just as résumé items. You ask questions. You look things up because you want to know.</div></div>
+      <div class="ccard"><div class="cicon">📅</div><div class="ctitle">Reliability &amp; commitment</div><div class="cbody">Research requires consistency. We look for students who show up, communicate, and follow through — not necessarily the highest GPA.</div></div>
+      <div class="ccard"><div class="cicon">🌱</div><div class="ctitle">Willingness to learn</div><div class="cbody">Every new student starts knowing very little about our methods. That's expected. What matters is whether you're willing to put in the work.</div></div>
+    </div>
+    <div class="notrequired"><strong>You do NOT need:</strong> prior research experience, a high GPA, to be a biology major, or to already know bioinformatics. We have trained students from scratch many times. If you're genuinely interested, apply.</div>
+  </div>
 
-    <h2>How to Apply</h2>
-    <p>Send Dr. Ogden an email introducing yourself. Include:</p>
-    <ul>
-      <li>Your year and major</li>
-      <li>Why you're interested in the lab</li>
-      <li>Which project area interests you most</li>
-      <li>Your availability (hours/week)</li>
-    </ul>
+  <div class="appwrap" id="apply">
+    <div class="section-label">Apply</div>
+    <h2>Lab Application</h2>
+    <div class="appintro">
+      This form takes about 20–30 minutes to complete thoughtfully. We read every application carefully. Please answer each question in your own words — responses that look like they were written for any lab won't stand out. There are no trick questions. We just want to get to know you.
+    </div>
 
-    <div class="contact-box">
-      <h3>Contact Dr. Ogden</h3>
-      <p>
-        <strong>Office:</strong> SB 243, Utah Valley University<br/>
-        <strong>Phone:</strong> (801) 863-8511<br/>
-        <strong>Email:</strong> <a href="mailto:heath.ogden@uvu.edu">heath.ogden@uvu.edu</a>
-      </p>
+    <!-- SETUP INSTRUCTIONS:
+         1. Go to formspree.io and sign up for a free account
+         2. Click "New Form", give it a name like "Ogden Lab Application"
+         3. Copy the form ID (looks like: xpzgkwrb)
+         4. Replace YOUR_FORM_ID below with your actual form ID
+         Example: action="https://formspree.io/f/xpzgkwrb"
+    -->
+    <form id="appform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+      <div class="fsec">
+        <div class="fsec-title">About You</div>
+        <div class="frow">
+          <div class="fg"><label>First Name *</label><input type="text" name="first_name" required /></div>
+          <div class="fg"><label>Last Name *</label><input type="text" name="last_name" required /></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>UVU Email *</label><input type="email" name="email" required /></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" name="phone" /></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Major(s) *</label><input type="text" name="major" required placeholder="e.g. Biology, Bioinformatics" /></div>
+          <div class="fg"><label>Year in School *</label>
+            <select name="year" required>
+              <option value="">Select...</option>
+              <option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Post-baccalaureate</option>
+            </select>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Hours available per week *</label>
+            <select name="hours_per_week" required>
+              <option value="">Select...</option>
+              <option>3–5 hours/week</option><option>6–9 hours/week</option><option>10–15 hours/week</option><option>15+ hours/week</option>
+            </select>
+          </div>
+          <div class="fg"><label>When can you start? *</label>
+            <select name="start_date" required>
+              <option value="">Select...</option>
+              <option>Immediately</option><option>Next semester</option><option>Next academic year</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Which research area interests you most? *</label>
+          <select name="research_interest" required>
+            <option value="">Select...</option>
+            <option>Insect phylogenomics / Mayfly evolution</option>
+            <option>Bioinformatics / Sequence analysis</option>
+            <option>Evolution education research</option>
+            <option>Field collecting / Natural history</option>
+            <option>Not sure yet — open to any project</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fsec">
+        <div class="fsec-title">Your Curiosity</div>
+        <div class="fg">
+          <label>Describe something in the natural world you find genuinely fascinating — something you've actually thought about, looked up, or explored on your own. It doesn't need to be related to our research. *</label>
+          <div class="hint">We're looking for authentic curiosity. Give us a real example, not a general statement about liking science.</div>
+          <textarea class="tall" name="q_genuine_curiosity" required oninput="wc(this,'c1',50,300)"></textarea>
+          <div class="cc" id="c1">Aim for 50–300 words</div>
+        </div>
+        <div class="fg">
+          <label>Why do you want to work in the Ogden Lab specifically? What is it about our research that interests you? *</label>
+          <div class="hint">Read our research page before answering. Generic answers ("I want to gain lab experience") won't help your application.</div>
+          <textarea class="tall" name="q_why_ogden_lab" required oninput="wc(this,'c2',50,250)"></textarea>
+          <div class="cc" id="c2">Aim for 50–250 words</div>
+        </div>
+      </div>
+
+      <div class="fsec">
+        <div class="fsec-title">Self-Assessment</div>
+        <div class="fg">
+          <label>If you had 5 unstructured hours in the lab with no instructions, what would you do? *</label>
+          <div class="hint">This reveals how you think about research. There is no single right answer.</div>
+          <textarea name="q_5_hours" required oninput="wc(this,'c3',30,200)"></textarea>
+          <div class="cc" id="c3">Aim for 30–200 words</div>
+        </div>
+        <div class="fg">
+          <label>What do you want to be able to do or say you've done by the time you finish in this lab? *</label>
+          <div class="hint">Think concretely — a skill, an achievement, an experience. This helps us understand your commitment level.</div>
+          <textarea name="q_goal" required oninput="wc(this,'c4',30,200)"></textarea>
+          <div class="cc" id="c4">Aim for 30–200 words</div>
+        </div>
+        <div class="fg">
+          <label>Describe a time you worked through something difficult or confusing — academic or otherwise. What did you do? *</label>
+          <textarea name="q_perseverance" required oninput="wc(this,'c5',40,250)"></textarea>
+          <div class="cc" id="c5">Aim for 40–250 words</div>
+        </div>
+      </div>
+
+      <div class="fsec">
+        <div class="fsec-title">Background &amp; Logistics</div>
+        <div class="fg">
+          <label>List any relevant skills, courses, or experiences (lab courses, programming, field experience, etc.). Leave blank if none — that is perfectly fine.</label>
+          <textarea name="q_relevant_skills" rows="3"></textarea>
+        </div>
+        <div class="fg">
+          <label>Anything else you'd like us to know?</label>
+          <textarea name="q_other_info" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="commitbox">
+        <div class="commitbox-title">Before you submit, please confirm: *</div>
+        <div class="citem"><input type="checkbox" id="k1" name="confirm_time" required /><label for="k1">I understand that research requires consistent, reliable weekly time commitment — not just showing up when convenient.</label></div>
+        <div class="citem"><input type="checkbox" id="k2" name="confirm_communicate" required /><label for="k2">I commit to communicating proactively with Dr. Ogden, including when I'm struggling or need to miss scheduled lab time.</label></div>
+        <div class="citem"><input type="checkbox" id="k3" name="confirm_semester" required /><label for="k3">I intend to continue for at least one full semester, not just a few weeks.</label></div>
+        <div class="citem"><input type="checkbox" id="k4" name="confirm_own_words" required /><label for="k4">I wrote my answers in my own words and they represent my genuine thoughts.</label></div>
+      </div>
+
+      <input type="hidden" name="_subject" value="New Ogden Lab Research Application" />
+      <input type="text" name="_gotcha" style="display:none" />
+
+      <button type="submit" class="subbtn" id="subbtn">Submit Application</button>
+      <p class="fnote">Your application will be sent directly to Dr. Ogden. Expect a response within 1–2 weeks.<br/>Questions? Email <strong>heath.ogden@uvu.edu</strong> or stop by SB 243A.</p>
+    </form>
+
+    <div class="successmsg" id="successmsg">
+      <h3>Application received!</h3>
+      <p>Thank you for applying to the Ogden Lab. Dr. Ogden will review your application and be in touch within 1–2 weeks. We appreciate the time and thought you put into your answers.</p>
     </div>
   </div>
 
   <footer>
     <span>© Ogden Lab · Utah Valley University</span>
-    <a href="index.html">← Back to Home</a>
+    <a href="research.html">← Our Research</a>
   </footer>
+
+  <script>
+    function wc(el,id,mn,mx){
+      const w=el.value.trim().split(/\s+/).filter(Boolean).length;
+      const d=document.getElementById(id);
+      d.textContent=w+' words (aim for '+mn+'–'+mx+')';
+      d.style.color=w>=mn?'#2d6a4f':'#c9a84c';
+    }
+    document.getElementById('appform').addEventListener('submit',async function(e){
+      e.preventDefault();
+      const btn=document.getElementById('subbtn');
+      btn.disabled=true;btn.textContent='Sending...';
+      try{
+        const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
+        if(r.ok){this.style.display='none';document.getElementById('successmsg').style.display='block';}
+        else{btn.disabled=false;btn.textContent='Submit Application';alert('Something went wrong. Please email heath.ogden@uvu.edu directly.');}
+      }catch{btn.disabled=false;btn.textContent='Submit Application';alert('Something went wrong. Please email heath.ogden@uvu.edu directly.');}
+    });
+  </script>
 </body>
 </html>
