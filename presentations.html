@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentations | Ogden Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#faf8f3;--bg2:#f0ede4;--ink:#1a1a18;--ink2:#4a4a42;--accent:#2d6a4f;--accent2:#52b788;--gold:#c9a84c;--border:rgba(26,26,24,0.12);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
+    nav{position:sticky;top:0;background:rgba(250,248,243,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:100;}
+    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;}
+    .nav-brand span{color:var(--accent);}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--accent);}
+    .page-header{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:5rem 6rem 3.5rem;}
+    .page-label{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+    .page-title{font-family:var(--serif);font-size:3rem;margin-bottom:1rem;}
+    .page-sub{font-size:1rem;opacity:0.75;font-weight:300;max-width:600px;}
+    .pres-stats{display:flex;gap:3rem;padding:2rem 6rem;background:var(--ink);color:#fff;flex-wrap:wrap;}
+    .psn{font-family:var(--serif);font-size:2rem;color:var(--accent2);line-height:1;}
+    .psl{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.55;margin-top:0.25rem;}
+    .content{max-width:920px;margin:0 auto;padding:4rem 2rem 6rem;}
+    .note{font-size:0.82rem;color:var(--ink2);margin-bottom:2rem;padding:0.75rem 1rem;background:var(--bg2);border-left:3px solid var(--accent2);}
+    .section-tabs{display:flex;gap:0;margin-bottom:3rem;border:1.5px solid var(--border);border-radius:4px;overflow:hidden;}
+    .tab-link{flex:1;padding:0.85rem 1rem;text-align:center;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;background:var(--bg);color:var(--ink2);border-right:1.5px solid var(--border);transition:all 0.2s;}
+    .tab-link:last-child{border-right:none;}
+    .tab-link.active,.tab-link:hover{background:var(--accent);color:#fff;}
+    .pres-section{margin-bottom:4rem;}
+    .section-head{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:0.75rem;border-bottom:2px solid var(--accent2);}
+    .section-icon{width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .section-title{font-family:var(--serif);font-size:1.8rem;color:var(--ink);}
+    .section-count{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink2);background:var(--bg2);padding:0.2rem 0.7rem;border-radius:100px;}
+    .year-group{margin-bottom:2rem;}
+    .year-label{font-size:0.85rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+    .year-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    .pres-entry{padding:0.85rem 0 0.85rem 1rem;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:0.85rem;align-items:start;}
+    .pres-entry:last-child{border-bottom:none;}
+    .pres-num{font-family:var(--serif);font-size:0.75rem;color:var(--accent2);font-weight:700;padding-top:0.1rem;min-width:20px;}
+    .pres-text{font-size:0.89rem;color:var(--ink);line-height:1.6;}
+    .pres-venue{font-size:0.78rem;color:var(--ink2);margin-top:0.2rem;}
+    .invited{display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#fff;padding:0.1rem 0.45rem;border-radius:2px;margin-right:0.4rem;vertical-align:middle;}
+    .keynote{display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:#8b5cf6;color:#fff;padding:0.1rem 0.45rem;border-radius:2px;margin-right:0.4rem;vertical-align:middle;}
+    .ug{display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:var(--gold);color:#fff;padding:0.1rem 0.45rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
+    footer{background:#0f1f18;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
+    footer a{color:var(--accent2);text-decoration:none;}
+    @media(max-width:768px){.page-header{padding:4rem 1.5rem 2.5rem;}.pres-stats{padding:1.5rem;gap:2rem;}.content{padding:2rem 1.5rem;}.section-tabs{flex-direction:column;}footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}.nav-links{gap:1rem;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="presentations.html">Presentations</a></li>
+      <li><a href="join.html">Join</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-label">Scholarship</div>
+    <h1 class="page-title">Presentations</h1>
+    <p class="page-sub">Oral and poster presentations at conferences, symposia, and invited talks. <strong>* = UVU undergraduate co-author/presenter.</strong></p>
+  </div>
+
+  <div class="pres-stats">
+    <div><div class="psn">93</div><div class="psl">Oral Presentations</div></div>
+    <div><div class="psn">119</div><div class="psl">Poster Presentations</div></div>
+    <div><div class="psn">★</div><div class="psl">UG Presenters</div></div>
+    <div><div class="psn">2001</div><div class="psl">First Presentation</div></div>
+  </div>
+
+  <div class="content">
+    <div class="note">* = undergraduate student co-presenter &nbsp;|&nbsp; <span class="invited" style="font-size:0.7rem;padding:0.15rem 0.5rem;">Invited</span> = invited speaker &nbsp;|&nbsp; <span class="keynote" style="font-size:0.7rem;padding:0.15rem 0.5rem;">Keynote</span> = keynote/plenary address &nbsp;|&nbsp; <span class="ug" style="font-size:0.7rem;padding:0.15rem 0.5rem;">★ UG</span> = undergraduate lead presenter</div>
+
+    <!-- ORAL PRESENTATIONS -->
+    <div class="pres-section" id="oral">
+      <div class="section-head">
+        <div class="section-icon">🎤</div>
+        <div class="section-title">Oral Presentations</div>
+        <div class="section-count">93 presentations</div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2025</div>
+        <div class="pres-entry"><div class="pres-num">1</div><div class="pres-text"><span class="keynote">Plenary</span><strong>Ogden, T. H.</strong> — Evolution of Flight in Insects: Insights from the Paleoptera (Odonata and Ephemeroptera). <div class="pres-venue">Entomological Society of Korea. Asan, South Korea. November 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">2</div><div class="pres-text"><strong>Ogden, T. H.</strong> Phylogeny of mayflies (Ephemeroptera): A new classification system. <div class="pres-venue">ESA 2025. Portland, OR. November 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">3</div><div class="pres-text">*Budge, A. and <strong>Ogden, T. H.</strong> Phylogenomics of the Flat-Headed Mayflies (Heptageniidae: Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">ESA 2025. Portland, OR. November 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">4</div><div class="pres-text">*Weir, T. and <strong>Ogden, T. H.</strong> The Mayflies of Utah.<span class="ug">★ UG</span><div class="pres-venue">ESA 2025. Portland, OR. November 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">5</div><div class="pres-text">*Rangel, M. and <strong>Ogden, T. H.</strong> Mayfly Wing Wonders: Uncovering Genetic Threads.<span class="ug">★ UG</span><div class="pres-venue">ESA 2025. Portland, OR. November 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">6</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — A Scientific Attitude will Innovate your Teaching.<div class="pres-venue">Thanksgiving Point Innovative Minds Conference. Lehi, UT. June 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">7</div><div class="pres-text">*Rangel, M. and <strong>Ogden, T. H.</strong> Mayfly Wing Wonders: Uncovering Genetic Threads.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase. Orem, UT. April 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">8</div><div class="pres-text">*Weir, T. and <strong>Ogden, T. H.</strong> An updated guide to the mayflies of Utah.<span class="ug">★ UG</span><div class="pres-venue">Pacific Branch ESA. Salt Lake City. March 2025.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2024</div>
+        <div class="pres-entry"><div class="pres-num">9</div><div class="pres-text"><strong>Ogden, T. H.</strong> Evolution, Phylogenomics, and Transcriptomics of Mayflies (Ephemeroptera).<div class="pres-venue">Entomological Society of America. Phoenix, AZ. November 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">10</div><div class="pres-text"><strong>Ogden, T. H.</strong> Evolution of Flight in Insects: Insights from the old winged insects (Odonata and Ephemeroptera).<div class="pres-venue">BUGFest, University of Utah Natural History Museum. Salt Lake City, UT. August 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">11</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Short Lived Relationships: Phylogenomics and Evolution of Mayflies (Ephemeroptera).<div class="pres-venue">10th Dresden Meeting on Insect Phylogeny. Dresden, Germany. September 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">12</div><div class="pres-text"><strong>Ogden, T. H.</strong> Phylogenomics and Evolution of Mayflies (Ephemeroptera).<div class="pres-venue">International Conference on Ephemeroptera and Plecoptera. Turin, Italy. July 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">13</div><div class="pres-text"><strong>Ogden, T. H.</strong> A Scientific Attitude will Innovate your Thinking.<div class="pres-venue">Thanksgiving Point Innovative Minds Conference. Lehi, UT. June 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">14</div><div class="pres-text"><strong>Ogden, T. H.</strong>, Hjelmen C., Laney A. Involving Undergraduates in Entomological Research: A Pathway to Entomology.<div class="pres-venue">ESA Pacific Branch 2024. Waikiloa, HI. April 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">15</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — The Evolution and Phylogenomics of Mayflies (Ephemeroptera).<div class="pres-venue">ESA Pacific Branch 2024. Waikiloa, HI. April 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">16</div><div class="pres-text">*Larsen, A. and <strong>Ogden, T. H.</strong> Asexual aviators: Transcriptome profile of the life stages of a parthenogenic mayfly.<span class="ug">★ UG</span><div class="pres-venue">ESA Pacific Branch 2024. Waikiloa, HI. April 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">17</div><div class="pres-text">*Larsen, A. and <strong>Ogden, T. H.</strong> Asexual aviators: Transcriptome profile of the life stages of a parthenogenic mayfly.<span class="ug">★ UG</span><div class="pres-venue">UCUR 2024. UVU, Orem, UT. April 2024.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2023</div>
+        <div class="pres-entry"><div class="pres-num">18</div><div class="pres-text">Premo J., Cusick J., <strong>Ogden, T. H.</strong>, Wyatt B. Science Immersion Using 3D Science Standards.<div class="pres-venue">Utah State Science Teachers Association Conference. Layton, UT. 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">19</div><div class="pres-text">Premo J., Hassan K., Hughes S., Backman E., Lund J., Cusick J., <strong>Ogden, T. H.</strong>, Wyatt B. What Makes Science Relevant: The Role of Science Immersion.<div class="pres-venue">SABER National Conference. Minneapolis, MN. 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">20</div><div class="pres-text">*Stone, K. and <strong>Ogden, T. H.</strong> The Insects of Capitol Reef: A Collaborative Approach to Creating a Field Guide.<span class="ug">★ UG</span><div class="pres-venue">ESA Pacific Branch. Seattle, WA. April 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">21</div><div class="pres-text">Baum, S., Cottam, E., Kidd, J., Ogden, T. H. Student Understanding in Association With Course Delivery.<div class="pres-venue">UVU Showcase 2023. Orem, UT. April 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">22</div><div class="pres-text">Baum, S., <strong>Ogden, T. H.</strong> Changes in Evolutionary Acceptance Following Introductory Biology, 2011–2021.<div class="pres-venue">UCUR 2023. University of Utah, SLC, UT. February 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">23</div><div class="pres-text">*Millar, T. and <strong>Ogden, T. H.</strong> Mayfly Phylogenomics, Using Anchored Hybrid Enrichment to Hypothesize the Relationships of Ephemeroptera.<span class="ug">★ UG</span><div class="pres-venue">UCUR 2023. University of Utah, SLC, UT. February 2023.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2022</div>
+        <div class="pres-entry"><div class="pres-num">24</div><div class="pres-text"><strong>Ogden, T. H.</strong> Undergraduate entomological research across disciplines — From insect field guides to bioinformatics.<div class="pres-venue">ESA 2022. Vancouver, BC. November 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">25</div><div class="pres-text">*Larsen, A. and <strong>Ogden, T. H.</strong> Phylogenomics of Baetidae: A Comparison in Classification.<span class="ug">★ UG</span><div class="pres-venue">ESA 2022. November 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">26</div><div class="pres-text">*Baum, S. and <strong>Ogden, T. H.</strong> A Longitudinal Study of Acceptance of Evolution and Scientific Literacy in a University Setting, 2011–2021.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase 2022. April 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">27</div><div class="pres-text">*Baum, S. and <strong>Ogden, T. H.</strong> A Longitudinal Study of Changes in Acceptance of Evolution in a University Setting, 2011–2021.<span class="ug">★ UG</span><div class="pres-venue">UCUR 2022. February 2022.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2021</div>
+        <div class="pres-entry"><div class="pres-num">28</div><div class="pres-text"><strong>Ogden, T. H.</strong>, *Vilela, E., *Millar, T. Phylogenomics and evolution of mayflies (Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">Entomological Society of America. Vancouver/Denver. 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">29</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — A Scientific Attitude: Acceptance of Evolution at UVU.<div class="pres-venue">UtSTA. American Fork High School. Fall 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">30</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Insects and Climate Change: From Ice Bugs to Mayflies.<div class="pres-venue">WNAN 2021. UVU. April 2021.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2019</div>
+        <div class="pres-entry"><div class="pres-num">31</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Unexpected Graduate Studies in Chile: From Moths to Mayflies.<div class="pres-venue">UVU Latin American Studies Symposium. November 2019.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">32</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Lessons from Darwin: for Scholarship and Life.<div class="pres-venue">Snow College Convocation. Ephraim, UT. 2019.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">33</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Evolution of Flight in Insects: Insights from Phylogenomics of Mayflies.<div class="pres-venue">UtSTA. Provo Convention Center. 2019.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2018</div>
+        <div class="pres-entry"><div class="pres-num">34</div><div class="pres-text">*Clawson, J. M. and <strong>Ogden, T. H.</strong> Molecular Phylogeny of the Mayfly Family Heptageniidae (Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">UCUR. Weber State University. 2018.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">35</div><div class="pres-text"><strong>Ogden, T. H.</strong>, Breinholt J., Bybee S., Miller D., Sartori M., Shiozawa D., and Whiting M. The Evolution and Phylogeny of Mayflies: Insights Derived from Phylogenomic Data.<div class="pres-venue">Entomological Society of America. Vancouver, Canada. 2018.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">36</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Reconciling Science and Religion.<div class="pres-venue">UVU Mormon Studies Conference: Heaven &amp; Earth. UVU. 2018.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">37</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Phylogenomics and Evolution of Mayflies.<div class="pres-venue">XV International Conference on Ephemeroptera. Vittoria, Brazil. 2018.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">38</div><div class="pres-text">*Miller D., Breinholt J., and <strong>Ogden, T. H.</strong> Anchored Phylogenomics of Burrowing Mayflies.<span class="ug">★ UG</span><div class="pres-venue">XV International Conference on Ephemeroptera. Vittoria, Brazil. 2018.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2017</div>
+        <div class="pres-entry"><div class="pres-num">39</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Roots of Knowledge and the Tree of Life.<div class="pres-venue">Roots of Knowledge Speaker Series. UVU. 2017.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">40</div><div class="pres-text"><span class="keynote">Keynote</span><strong>Ogden, T. H.</strong> — Let Life Bug You! Empower yourself.<div class="pres-venue">UVU Empowering your Tomorrow Conference. 2017.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">41</div><div class="pres-text">*Miller, D. and <strong>Ogden, T. H.</strong> Tusk evolution in the burrowing mayflies: traditional genes vs. phylogenomics.<span class="ug">★ UG</span><div class="pres-venue">Evolution. Portland, OR. 2017.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">42</div><div class="pres-text"><strong>Ogden, T. H.</strong>, Miller D., and J. Breinholt. The Evolution of Mayflies: Ephemeroptera Phylogenomics.<div class="pres-venue">Evolution. Portland, OR. 2017.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">43</div><div class="pres-text">*Ferguson, D. and <strong>Ogden, T. H.</strong> Accepting Evolution: Factors that lead to change in students' acceptance of evolution.<span class="ug">★ UG</span><div class="pres-venue">Evolution. Portland, OR. 2017.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">44</div><div class="pres-text"><span class="keynote">Keynote</span><strong>Ogden, T. H.</strong> — Lessons from Darwin: for research and life.<div class="pres-venue">UCUR. UVU. 2017.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">45</div><div class="pres-text">*Ferguson, D. and <strong>Ogden, T. H.</strong> To accept or not accept: evolution and worldview reconciliation in an Introductory Biology course.<span class="ug">★ UG</span><div class="pres-venue">UCUR. UVU. 2017.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2015</div>
+        <div class="pres-entry"><div class="pres-num">46</div><div class="pres-text"><strong>Ogden, T. H.</strong> Simulation studies in bioinformatic research.<div class="pres-venue">ACS Northwest Regional Meeting (NORM). June 2015.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">47</div><div class="pres-text"><strong>Ogden, T. H.</strong> Molecular Phylogenetics of Mayflies: status and future directions.<div class="pres-venue">XIV International Conference on Ephemeroptera and XVIII International Symposia on Plecoptera. Aberdeen, Scotland. June 2015.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2010–2013</div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><strong>Ogden, T. H.</strong> Angels and Demons (and Mayflies): The Evolution of Flight in Insects.<div class="pres-venue">UVU Thinks Big. Utah Valley University. September 2011.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><strong>Ogden, T. H.</strong> The Common Insects of Capitol Reef.<div class="pres-venue">Entrada Institute, Torrey UT. August 2013.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><strong>Ogden, T. H.</strong> Alignment and Topological Accuracy: Clustal+PAUP* vs POY revisited.<div class="pres-venue">Evolution Meeting. Portland, OR. 2010.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2001–2009 (Selected)</div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><strong>Ogden, T. H.</strong> and Rosenberg M. S. The use of simulation to study the role of alignment accuracy in phylogenetic inference. <em>Finalist, Ernst Mayr Award.</em><div class="pres-venue">Evolution 2005.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><strong>Ogden, T. H.</strong> and Whiting M. F. Phylogeny and evolution of mayflies (Ephemeroptera). <em>Finalist, Ernst Mayr Award.</em><div class="pres-venue">Evolution 2004.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> and Whiting M. F. Phylogeny of Ephemeroptera: molecular evidence.<div class="pres-venue">Phylogenetic Relationships within the Insect Orders. Dresden, Germany. 2003.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Phylogenomics and Bioinformatics: From Insect Evolution to Computational Biology.<div class="pres-venue">Idaho State University. 2006.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text"><span class="invited">Invited</span><strong>Ogden, T. H.</strong> — Phylogenomics and Bioinformatics: Mayflies and Molecules.<div class="pres-venue">University of Arkansas. 2007.</div></div></div>
+      </div>
+    </div>
+
+    <!-- POSTER PRESENTATIONS -->
+    <div class="pres-section" id="posters">
+      <div class="section-head">
+        <div class="section-icon">📋</div>
+        <div class="section-title">Poster Presentations</div>
+        <div class="section-count">119 posters</div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2025</div>
+        <div class="pres-entry"><div class="pres-num">1</div><div class="pres-text">*Forman, K. and <strong>Ogden, T. H.</strong> Novel report of reproductive diapause in a Neotropical butterfly.<span class="ug">★ UG</span><div class="pres-venue">ESA 2025. Portland, OR. November 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">2</div><div class="pres-text">*Sanderson, S., Jones, M., and <strong>Ogden, T. H.</strong> Phylogenomic Relationships of Leptophlebiidae.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase. Orem, UT. April 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">3</div><div class="pres-text">*Forman, K. and <strong>Ogden, T. H.</strong> A population and new host record of the shasta blue butterfly in Utah County, Utah.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase &amp; Pacific Branch ESA. April 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">4</div><div class="pres-text">*Budge, A. and <strong>Ogden, T. H.</strong> Phylogenetic Analysis of Heptageniidae (Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase &amp; Pacific Branch ESA. April 2025.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">5</div><div class="pres-text">*Sanderson, S. and <strong>Ogden, T. H.</strong> Evolution of the prong-gilled mayflies (Leptophlebiidae).<span class="ug">★ UG</span><div class="pres-venue">Pacific Branch ESA. Salt Lake City. March 2025.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2024</div>
+        <div class="pres-entry"><div class="pres-num">6</div><div class="pres-text">*Rangel, M., *Weir, T., <strong>Ogden, T. H.</strong> Mayfly wing wonders: Uncovering genetic threads.<span class="ug">★ UG</span><div class="pres-venue">Entomological Society of America. Phoenix, AZ. November 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">7</div><div class="pres-text">*Rangel, M. and <strong>Ogden, T. H.</strong> Mayfly Wing Wonders: Uncovering Genetic Threads in Parthenogenic Individuals using RNA.<span class="ug">★ UG</span><div class="pres-venue">ESA Pacific Branch 2024. Waikiloa, HI. April 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">8</div><div class="pres-text">*Weir, T. and <strong>Ogden, T. H.</strong> An Updated Guide to the Ephemeroptera of Utah.<span class="ug">★ UG</span><div class="pres-venue">ESA Pacific Branch 2024. Waikiloa, HI. April 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">9</div><div class="pres-text">*Black, K., <strong>Ogden, T. H.</strong>, Wyatt B., Cusick J., Premo J. Religion, Evolution and Vaccinations: Perceptions from a GE Student Population.<span class="ug">★ UG</span><div class="pres-venue">UCUR 2024. UVU, Orem, UT. February 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">10</div><div class="pres-text">*Foreman, K. and <strong>Ogden, T. H.</strong> Monarch Butterflies — What's in their Color?<span class="ug">★ UG</span><div class="pres-venue">UCUR 2024. UVU, Orem, UT. February 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">11</div><div class="pres-text">*Rangel, M., *Larsen, A. and <strong>Ogden, T. H.</strong> Mayfly Wing Wonders: Uncovering Genetic Threads in Parthenogenic Individuals using RNA.<span class="ug">★ UG</span><div class="pres-venue">UCUR 2024. UVU, Orem, UT. February 2024.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">12</div><div class="pres-text">*Kipp, H. and <strong>Ogden, T. H.</strong> Identifying and photographing the instars of a parthenogenetic mayfly (Centroptilum trianguilfer).<span class="ug">★ UG</span><div class="pres-venue">UCUR 2024. UVU, Orem, UT. February 2024.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2023</div>
+        <div class="pres-entry"><div class="pres-num">13</div><div class="pres-text">*Butler, C. A. and <strong>Ogden, T. H.</strong> Phylogenomic Relationships of Leptophlebiidae.<span class="ug">★ UG</span><div class="pres-venue">ESA Pacific Branch. Seattle, WA. April 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">14</div><div class="pres-text">*Foreman, K. and <strong>Ogden, T. H.</strong> A Potential for Reproductive Diapause in Neotropical Butterflies.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase &amp; UCUR 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">15</div><div class="pres-text">*Larsen, A. and <strong>Ogden, T. H.</strong> Phylogenomics of Baetidae, a Comparison in Classification.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase &amp; UCUR 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">16</div><div class="pres-text">*Stone, K. and <strong>Ogden, T. H.</strong> The Insects of Capitol Reef: A Collaborative Approach to Creating a Field Guide.<span class="ug">★ UG</span><div class="pres-venue">UCUR 2023.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">17</div><div class="pres-text">*Weir, T. and <strong>Ogden, T. H.</strong> The Mayflies of Utah.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase 2023.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2022</div>
+        <div class="pres-entry"><div class="pres-num">18</div><div class="pres-text">*Murphy, T. and <strong>Ogden, T. H.</strong> Molecular Phylogeny of the Mayfly Family Heptageniidae (Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">ESA 2022. November 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">19</div><div class="pres-text">*Foreman, K., Thulin C., <strong>Ogden, T. H.</strong> Ommochrome Pigments in Wings and Eyes of the Monarch Butterfly and its White Morph.<span class="ug">★ UG</span><div class="pres-venue">ESA 2022. November 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">20</div><div class="pres-text">*Millar, T. and <strong>Ogden, T. H.</strong> Phylogenomic Relationships of Ephemeroptera.<span class="ug">★ UG</span><div class="pres-venue">ESA 2022. November 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">21</div><div class="pres-text">*Jensen, J., *Stone, K., <strong>Ogden, T. H.</strong> The Insects of Capitol Reef.<span class="ug">★ UG</span><div class="pres-venue">ESA 2022 (×2). November 2022.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">22</div><div class="pres-text">Multiple UG student posters — UVU Showcase 2022 &amp; UCUR 2022.<span class="ug">★ UG</span><div class="pres-venue">Vilela E, Larsen A, Weir T, Millar T, Stone K, Jensen J, Foreman K. Spring 2022.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2021</div>
+        <div class="pres-entry"><div class="pres-num">23</div><div class="pres-text">*Murphy, T. and <strong>Ogden, T. H.</strong> Molecular Phylogeny of the Mayfly Family Heptageniidae.<span class="ug">★ UG</span><div class="pres-venue">ESA &amp; UCUR. 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">24</div><div class="pres-text">*Meecham, J. and <strong>Ogden, T. H.</strong> Is Coloburiscidae monophyletic: a test of the Gondwanan Hypothesis.<span class="ug">★ UG</span><div class="pres-venue">ESA &amp; UVU Showcase &amp; UCUR. 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">25</div><div class="pres-text">*Vilela, E., *Millar, T. and <strong>Ogden, T. H.</strong> A Bioinformatic Workflow for Genome Assembly from Anchored Hybrid Enrichment Raw Sequence Data.<span class="ug">★ UG</span><div class="pres-venue">ESA. Denver. 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">26</div><div class="pres-text">*Larsen, A. and <strong>Ogden, T. H.</strong> Phylogenetic Relationships of Baetidae (Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">ESA &amp; UCUR &amp; UVU Showcase. 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">27</div><div class="pres-text">*Reed, J., *Whetten, J. and <strong>Ogden, T. H.</strong> DNA Barcoding of Vietnamese Mayflies.<span class="ug">★ UG</span><div class="pres-venue">UCUR &amp; UVU Showcase. 2021.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">28</div><div class="pres-text">*Weir, T. and <strong>Ogden, T. H.</strong> The Mayflies of Utah.<span class="ug">★ UG</span><div class="pres-venue">UCUR &amp; UVU Showcase. 2021.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2019–2020</div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text">*Meecham, J. and <strong>Ogden, T. H.</strong> Molecular Phylogeny of Coloburiscidae (Ephemeroptera).<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase. Oct 2019.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text">*Vilela, E. and <strong>Ogden, T. H.</strong> Transcriptomics of Ephemeroptera: Generation of New Data and Bioinformatics Workflow.<span class="ug">★ UG</span><div class="pres-venue">UVU Showcase. Oct 2019 &amp; UCUR 2020.</div></div></div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text">*Hyer, E., *Backman, N., and <strong>Ogden, T. H.</strong> A Worldwide Phylogenetic Study of the Family Baetidae.<span class="ug">★ UG</span><div class="pres-venue">UCUR. Utah State University. 2020.</div></div></div>
+      </div>
+
+      <div class="year-group">
+        <div class="year-label">2010–2018 (Selected undergraduate posters)</div>
+        <div class="pres-entry"><div class="pres-num">—</div><div class="pres-text">Numerous UG student posters at UCUR, NCUR, ESA, and UVU Showcase on topics including: Ephemeroptera phylogenetics, insect natural history of Capitol Reef NP, NANOGP8 genomics, evolution acceptance, opsin evolution, cave arthropods, and more.<span class="ug">★ UG</span><div class="pres-venue">2010–2018. See CV for complete listing.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© Ogden Lab · Utah Valley University</span>
+    <a href="publications.html">← Back to Publications</a>
+  </footer>
+</body>
+</html>
