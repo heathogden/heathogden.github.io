@@ -1,359 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab Photos | Ogden Lab</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root{--bg:#faf8f3;--bg2:#f0ede4;--ink:#1a1a18;--ink2:#4a4a42;--accent:#2d6a4f;--accent2:#52b788;--gold:#c9a84c;--border:rgba(26,26,24,0.12);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
-    nav{position:sticky;top:0;background:rgba(250,248,243,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:100;}
-    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;}
-    .nav-brand span{color:var(--accent);}
-    .nav-links{display:flex;gap:1.5rem;list-style:none;}
-    .nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
-    .nav-links a:hover{color:var(--accent);}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lab Photos | Ogden Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#faf8f3;--bg2:#f0ede4;--ink:#1a1a18;--ink2:#4a4a42;--accent:#2d6a4f;--accent2:#52b788;--gold:#c9a84c;--border:rgba(26,26,24,0.12);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
 
-    .page-header{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:5rem 6rem 3.5rem;}
-    .page-label{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
-    .page-title{font-family:var(--serif);font-size:3rem;margin-bottom:1rem;}
-    .page-sub{font-size:1rem;opacity:0.75;font-weight:300;max-width:600px;}
+nav{position:sticky;top:0;background:rgba(250,248,243,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:100;}
+.nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;}
+.nav-brand span{color:var(--accent);}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
 
-    /* Filter tabs */
-    .filter-bar{padding:2rem 4rem 0;display:flex;gap:0.5rem;flex-wrap:wrap;}
-    .filter-btn{padding:0.4rem 1.1rem;border:1.5px solid var(--border);border-radius:100px;font-size:0.8rem;font-weight:500;cursor:pointer;background:transparent;color:var(--ink2);transition:all 0.2s;font-family:var(--sans);}
-    .filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.page-header{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:5rem 6rem 3.5rem;}
+.page-label{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+.page-title{font-family:var(--serif);font-size:3rem;margin-bottom:1rem;}
+.page-sub{font-size:1rem;opacity:0.75;font-weight:300;max-width:600px;}
 
-    /* Masonry-style gallery */
-    .gallery{padding:2.5rem 4rem 5rem;columns:3 280px;gap:1.25rem;}
-    .gallery-item{break-inside:avoid;margin-bottom:1.25rem;position:relative;border-radius:4px;overflow:hidden;background:var(--bg2);cursor:pointer;}
-    .gallery-item img{width:100%;height:auto;display:block;transition:transform 0.35s ease;}
-    .gallery-item:hover img{transform:scale(1.04);}
-    .gallery-item .caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;padding:1.5rem 1rem 0.75rem;font-size:0.78rem;opacity:0;transition:opacity 0.25s;line-height:1.4;}
-    .gallery-item:hover .caption{opacity:1;}
-    .cat-badge{display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent2);color:#fff;padding:0.1rem 0.45rem;border-radius:2px;margin-bottom:0.35rem;}
+/* Filter tabs */
+.filter-bar{padding:2rem 4rem 0;display:flex;gap:0.5rem;flex-wrap:wrap;}
+.filter-btn{padding:0.4rem 1.1rem;border:1.5px solid var(--border);border-radius:100px;font-size:0.8rem;font-weight:500;cursor:pointer;background:transparent;color:var(--ink2);transition:all 0.2s;font-family:var(--sans);}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;}
-    .lightbox.open{display:flex;}
-    .lightbox-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:3px;}
-    .lightbox-close{position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
-    .lightbox-close:hover{background:rgba(255,255,255,0.3);}
-    .lightbox-caption{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.8);font-size:0.875rem;text-align:center;max-width:600px;background:rgba(0,0,0,0.5);padding:0.5rem 1rem;border-radius:3px;}
-    .lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
-    .lightbox-nav:hover{background:rgba(255,255,255,0.3);}
-    .lightbox-prev{left:1rem;}
-    .lightbox-next{right:1rem;}
+/* Section headings inside gallery */
+.gallery-section{padding:2.5rem 4rem 0;}
+.gallery-section-title{font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin-bottom:0.25rem;display:flex;align-items:center;gap:0.75rem;}
+.gallery-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.gallery-section-sub{font-size:0.82rem;color:var(--ink2);margin-bottom:1.5rem;}
 
-    /* hidden items for filter */
-    .gallery-item.hidden{display:none;}
+/* Masonry-style gallery */
+.gallery{columns:3 280px;gap:1.25rem;padding:0 4rem 5rem;}
+.gallery-item{break-inside:avoid;margin-bottom:1.25rem;position:relative;border-radius:4px;overflow:hidden;background:var(--bg2);cursor:pointer;}
+.gallery-item img{width:100%;height:auto;display:block;transition:transform 0.35s ease;}
+.gallery-item:hover img{transform:scale(1.04);}
+.gallery-item .caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;padding:1.5rem 1rem 0.75rem;font-size:0.78rem;opacity:0;transition:opacity 0.25s;line-height:1.5;}
+.gallery-item:hover .caption{opacity:1;}
+.cat-badge{display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent2);color:#fff;padding:0.1rem 0.45rem;border-radius:2px;margin-bottom:0.35rem;}
+.caption-names{font-weight:500;font-size:0.8rem;margin-bottom:0.1rem;}
+.caption-event{font-size:0.72rem;opacity:0.85;}
 
-    footer{background:#0f1f18;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
-    footer a{color:var(--accent2);text-decoration:none;}
-    @media(max-width:768px){
-      .page-header{padding:4rem 1.5rem 2.5rem;}
-      .filter-bar{padding:1.5rem;}
-      .gallery{padding:1.5rem;columns:2 160px;}
-      footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
-      .nav-links{gap:0.75rem;}
-    }
-  </style>
+/* hidden items for filter */
+.gallery-item.hidden{display:none;}
+.gallery-section.hidden{display:none;}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;}
+.lightbox.open{display:flex;}
+.lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:3px;}
+.lightbox-close{position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.lightbox-close:hover{background:rgba(255,255,255,0.3);}
+.lightbox-caption{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.9);font-size:0.875rem;text-align:center;max-width:650px;background:rgba(0,0,0,0.55);padding:0.6rem 1.2rem;border-radius:4px;line-height:1.5;}
+.lightbox-caption strong{display:block;font-size:0.95rem;margin-bottom:0.1rem;}
+.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.lightbox-nav:hover{background:rgba(255,255,255,0.3);}
+.lightbox-prev{left:1rem;}
+.lightbox-next{right:1rem;}
+
+footer{background:#0f1f18;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
+footer a{color:var(--accent2);text-decoration:none;}
+
+@media(max-width:768px){
+  .page-header{padding:4rem 1.5rem 2.5rem;}
+  .filter-bar{padding:1.5rem;}
+  .gallery{padding:1rem 1rem 3rem;columns:2 160px;}
+  .gallery-section{padding:2rem 1rem 0;}
+  footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
+  .nav-links{gap:0.75rem;}
+}
+</style>
 </head>
 <body>
-  <nav>
-    <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="people.html">People</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="presentations.html">Presentations</a></li>
-      <li><a href="photos.html">Photos</a></li>
-      <li><a href="join.html">Join</a></li>
-    </ul>
-  </nav>
 
-  <div class="page-header">
-    <div class="page-label">The Lab in Action</div>
-    <h1 class="page-title">Lab Photos</h1>
-    <p class="page-sub">Conferences, field work, student presentations, and lab life — a look at what we do.</p>
+<nav>
+  <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="people.html">People</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="join.html">Join</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">The Lab in Action</div>
+  <h1 class="page-title">Lab Photos</h1>
+  <p class="page-sub">Conferences, student presentations, and lab life — from ESA and UCUR to the field and beyond.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterGallery('all', this)">All Photos</button>
+  <button class="filter-btn" onclick="filterGallery('esa', this)">ESA</button>
+  <button class="filter-btn" onclick="filterGallery('ucur', this)">UCUR</button>
+  <button class="filter-btn" onclick="filterGallery('posters', this)">Student Posters</button>
+  <button class="filter-btn" onclick="filterGallery('talks', this)">Talks</button>
+  <button class="filter-btn" onclick="filterGallery('group', this)">Group Photos</button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ESA 2025 — Portland, OR
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="esa">
+  <h2 class="gallery-section-title">ESA 2025 — Portland, OR</h2>
+  <p class="gallery-section-sub">Entomological Society of America Annual Meeting · November 2025</p>
+</div>
+<div class="gallery" data-section="esa">
+
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Heath Ogden, Andrew Budge, Kyri Forman, Meli Rangel"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6561.jpeg" alt="Lab group by Portland waterfront" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025</span>
+      <div class="caption-names">Heath Ogden, Andrew Budge, Kyri Forman, Meli Rangel</div>
+      <div class="caption-event">Portland waterfront · November 2025</div>
+    </div>
   </div>
 
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterGallery('all', this)">All Photos</button>
-    <button class="filter-btn" onclick="filterGallery('conference', this)">Conferences</button>
-    <button class="filter-btn" onclick="filterGallery('posters', this)">Student Posters</button>
-    <button class="filter-btn" onclick="filterGallery('awards', this)">Awards</button>
-    <button class="filter-btn" onclick="filterGallery('fieldwork', this)">Field Work</button>
-    <button class="filter-btn" onclick="filterGallery('lab', this)">Lab Life</button>
+  <div class="gallery-item" data-cat="esa talks"
+       data-names="Andrew Budge — Phylogenomics of Heptageniidae (Ephemeroptera)"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6591.jpeg" alt="Andrew Budge giving a talk at ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Talk</span>
+      <div class="caption-names">Andrew Budge</div>
+      <div class="caption-event">"Phylogenomics of the Flat-Headed Mayflies (Heptageniidae)" · ESA 2025</div>
+    </div>
   </div>
 
-  <div class="gallery" id="gallery">
-
-    <!-- CONFERENCE / GROUP PHOTOS -->
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(0)">
-      <img src="https://lh3.googleusercontent.com/d/1wuGOEphP7PUQF72T20JyUhQVlfQT8COG" alt="Conference group photo" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Lab at ESA — group photo</div>
+  <div class="gallery-item" data-cat="esa talks"
+       data-names="Andrew Budge — Phylogenomics of Heptageniidae (Ephemeroptera)"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6592.jpeg" alt="Andrew Budge presenting at ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Talk</span>
+      <div class="caption-names">Andrew Budge</div>
+      <div class="caption-event">"Phylogenomics of the Flat-Headed Mayflies (Heptageniidae)" · ESA 2025</div>
     </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(1)">
-      <img src="https://lh3.googleusercontent.com/d/1mXjCz-SveE7dVVU8etIfRjuUJ1nSZwNu" alt="Conference group" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Entomological Society of America</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(2)">
-      <img src="https://lh3.googleusercontent.com/d/1Y1A-Do9_tlHbFUH36vxAWyKPvJJSu4lM" alt="Conference" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>ESA meeting</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(3)">
-      <img src="https://lh3.googleusercontent.com/d/1i3EqSrQyuzzuWN_xjbW9Qk9D4zLzMRYM" alt="Group at conference" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Lab group at national meeting</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(4)">
-      <img src="https://lh3.googleusercontent.com/d/1dvQZI4fZTop2Ar3riXe45pNyDZy0IDSi" alt="Conference" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Dee Events Center — ESA Pacific Branch</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(5)">
-      <img src="https://lh3.googleusercontent.com/d/1ZDs3WbjwucWo8Uby9EQAoR4o1toYsZRD" alt="Conference group" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Lab members at ESA</div>
-    </div>
-
-    <!-- STUDENT POSTERS -->
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(6)">
-      <img src="https://lh3.googleusercontent.com/d/0B-s-pyK1zE4zYWROQUpsQzNxdjA" alt="Student poster presentation" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>Poster presentation — UVU Showcase</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(7)">
-      <img src="https://lh3.googleusercontent.com/d/1VfiA9m_kjLD6foixenKBCbIRCI24Q3xl" alt="Student poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>Student presenting research</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(8)">
-      <img src="https://lh3.googleusercontent.com/d/1EHM7Vctw-EzhJ1lK8VLwQKU4_huc28bz" alt="Poster presentation" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>Research poster presentation</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(9)">
-      <img src="https://lh3.googleusercontent.com/d/1RgfGXMhd1A6D7G1YHbxNC2frzjb2xBTQ" alt="Student poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>UVU Showcase poster</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(10)">
-      <img src="https://lh3.googleusercontent.com/d/1CztwKvlXdiTZ_jjbu8hwh-2zUbcCm0-P" alt="Poster at ESA" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>ESA poster session</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(11)">
-      <img src="https://lh3.googleusercontent.com/d/1ZTVMecNTXW3pDi05BbheAp3wqF5ymHMQ" alt="Student poster presentation" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>Student research presentation</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(12)">
-      <img src="https://lh3.googleusercontent.com/d/1zpI_2N9dAAwNQNm5W2O3bEuu-UlgX08u" alt="Phylogenetics poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>Phylogenomic reanalysis — Heptageniidae</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(13)">
-      <img src="https://lh3.googleusercontent.com/d/1kqvYslVOJH4izTfJtHUYkdmpmdPILeuQ" alt="UCUR poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>UCUR presentation</div>
-    </div>
-
-    <!-- LAB LIFE -->
-    <div class="gallery-item" data-cat="lab" onclick="openLightbox(14)">
-      <img src="https://lh3.googleusercontent.com/d/1Frlrz5dVtS8p9-pY0nj3M541ZDFG4pLn" alt="Dr. Ogden presenting" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Lab Life</span><br/>Dr. Ogden at the podium</div>
-    </div>
-
-    <div class="gallery-item" data-cat="lab" onclick="openLightbox(15)">
-      <img src="https://lh3.googleusercontent.com/d/1iBFm_03RZGfbmhRuuWegdrwSyEPkJ_Cm" alt="Dr. Ogden" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Lab Life</span><br/>Dr. Ogden</div>
-    </div>
-
-    <div class="gallery-item" data-cat="fieldwork" onclick="openLightbox(16)">
-      <img src="https://lh3.googleusercontent.com/d/1O0tCFgc_zhXLZuCR2XBN8NW9FY1D9rA2" alt="Butterfly fieldwork" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Field Work</span><br/>Butterfly specimen — field collecting</div>
-    </div>
-
-    <div class="gallery-item" data-cat="fieldwork" onclick="openLightbox(17)">
-      <img src="https://lh3.googleusercontent.com/d/1X078dDuye-IuBJKx7pvmg1iqLvfoyvC6" alt="Field collecting" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Field Work</span><br/>Field collecting — butterfly exhibit</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(18)">
-      <img src="https://lh3.googleusercontent.com/d/1WtOxT3Fup8pl0Vr69-Cyj5a0Q8Ch4etg" alt="Portland conference" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Portland — ESA or Evolution meeting</div>
-    </div>
-
-    <div class="gallery-item" data-cat="lab" onclick="openLightbox(19)">
-      <img src="https://lh3.googleusercontent.com/d/1gDzaV5DxIou6FrM2inImm-3H896qc2y5" alt="Lab group" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Lab Life</span><br/>Lab group photo</div>
-    </div>
-
-    <div class="gallery-item" data-cat="awards" onclick="openLightbox(20)">
-      <img src="https://lh3.googleusercontent.com/d/1Vcq5aCv0mQB9Ok5mxKUzBWz0WkjAOjcf" alt="Outstanding student award" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Awards</span><br/>Outstanding Student — College of Science</div>
-    </div>
-
-    <div class="gallery-item" data-cat="awards" onclick="openLightbox(21)">
-      <img src="https://lh3.googleusercontent.com/d/1lOBbobNuME0iUQObQ89-PFGNfW-IJYsF" alt="Award ceremony" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Awards</span><br/>Outstanding Student Award ceremony</div>
-    </div>
-
-    <div class="gallery-item" data-cat="awards" onclick="openLightbox(22)">
-      <img src="https://lh3.googleusercontent.com/d/1wSXHkXzi_XTv54ouqFmIXNZ2nhLCQNw3" alt="Student award" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Awards</span><br/>Student recognition — College of Science</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(23)">
-      <img src="https://lh3.googleusercontent.com/d/1H4PJghJdOUY25Lbrc9_eS-utgK5jP1mr" alt="Showcase poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>UVU Showcase — Ogden Lab</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(24)">
-      <img src="https://lh3.googleusercontent.com/d/1VVe9K1vBlRC3i7j84Zs1ceEuPyNma7Tb" alt="Showcase poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>UVU Showcase</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(25)">
-      <img src="https://lh3.googleusercontent.com/d/10vVHRUzYSQf5c-Rvm06CRtyCwQVvz5bh" alt="UCUR conference" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>UCUR — student research conference</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(26)">
-      <img src="https://lh3.googleusercontent.com/d/10uPP2Gfrbh-YC6BkW3yzPsvajtWzFvF0" alt="UCUR presentation" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>UCUR — student presentation</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(27)">
-      <img src="https://lh3.googleusercontent.com/d/10uOrUAX1d_E9Ly8mWvg2B8ecUQ8rmstN" alt="UCUR" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>UCUR with Dr. Ogden</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(28)">
-      <img src="https://lh3.googleusercontent.com/d/1xVv2nh1OjpP_VxK4THqVae-PNA-nRR3f" alt="Conference" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Lab at a conference</div>
-    </div>
-
-    <div class="gallery-item" data-cat="conference" onclick="openLightbox(29)">
-      <img src="https://lh3.googleusercontent.com/d/1ccLw1DAf-mA7EePjByTH9z5r0dX1HdMU" alt="Conference group" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Conference</span><br/>Group at national meeting</div>
-    </div>
-
-    <div class="gallery-item" data-cat="lab" onclick="openLightbox(30)">
-      <img src="https://lh3.googleusercontent.com/d/1EF5C0i_P-CzNVkMZa1MLkYqz9EShf9yH" alt="Lab activity" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Lab Life</span><br/>Lab activities</div>
-    </div>
-
-    <div class="gallery-item" data-cat="lab" onclick="openLightbox(31)">
-      <img src="https://lh3.googleusercontent.com/d/1f5vbrdPMtY1bfLVtfLz1U-qJ0MVQF2sU" alt="Lab" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Lab Life</span><br/>In the lab</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(32)">
-      <img src="https://lh3.googleusercontent.com/d/1e2nzBc-mhHjkm6yAoX1-klV7YZfRGSL9" alt="Showcase poster" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>Showcase — student research</div>
-    </div>
-
-    <div class="gallery-item" data-cat="posters" onclick="openLightbox(33)">
-      <img src="https://lh3.googleusercontent.com/d/1FElAb52IHY5NAdIbwcLn0Ap0x-2BZdaz" alt="Showcase" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Student Posters</span><br/>UVU Showcase poster session</div>
-    </div>
-
-    <div class="gallery-item" data-cat="lab" onclick="openLightbox(34)">
-      <img src="https://lh3.googleusercontent.com/d/1NJH0Tr-gX_WIo7VuEXvBioZpQcAaOPGP" alt="Lab photo" loading="lazy" />
-      <div class="caption"><span class="cat-badge">Lab Life</span><br/>Ogden Lab</div>
-    </div>
-
   </div>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
-    <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Jeremy Jensen, Heath Ogden, Andrew Budge"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6594.jpeg" alt="Jensen, Ogden, and Budge on the Portland tram" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025</span>
+      <div class="caption-names">Jeremy Jensen, Heath Ogden, Andrew Budge</div>
+      <div class="caption-event">Portland tram · November 2025</div>
+    </div>
   </div>
 
-  <footer>
-    <span>© Ogden Lab · Utah Valley University</span>
-    <a href="index.html">← Back to Home</a>
-  </footer>
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Kyri Forman — Novel Report of Reproductive Diapause in a Neotropical Butterfly"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6595.jpeg" alt="Kyri Forman presenting her butterfly poster at ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Poster</span>
+      <div class="caption-names">Kyri Forman</div>
+      <div class="caption-event">"Novel Report of Reproductive Diapause in a Neotropical Butterfly" · ESA 2025</div>
+    </div>
+  </div>
 
-  <script>
-    let currentIndex = 0;
-    let visibleItems = [];
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Kyri Forman — Novel Report of Reproductive Diapause in a Neotropical Butterfly"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6596.jpeg" alt="Kyri Forman at her poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Poster</span>
+      <div class="caption-names">Kyri Forman</div>
+      <div class="caption-event">"Novel Report of Reproductive Diapause in a Neotropical Butterfly" · ESA 2025</div>
+    </div>
+  </div>
 
-    function getVisibleItems() {
-      return [...document.querySelectorAll('.gallery-item:not(.hidden)')];
-    }
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Kyri Forman, Meli Rangel, Andrew Budge, Heath Ogden, Kelsey Stone, Tabitha Weir"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6599.jpeg" alt="Lab group at the Portland butterfly mural" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Group</span>
+      <div class="caption-names">Kyri Forman, Meli Rangel, Andrew Budge, Heath Ogden, Kelsey Stone, Tabitha Weir</div>
+      <div class="caption-event">Portland butterfly mural · November 2025</div>
+    </div>
+  </div>
 
-    function openLightbox(idx) {
-      visibleItems = getVisibleItems();
-      currentIndex = idx;
-      // find the actual index among visible items
-      const allItems = [...document.querySelectorAll('.gallery-item')];
-      const clicked = allItems[idx];
-      const visIdx = visibleItems.indexOf(clicked);
-      if (visIdx >= 0) currentIndex = visIdx;
-      showLightboxItem();
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Kyri Forman, Meli Rangel, Andrew Budge, Heath Ogden, Kelsey Stone, Tabitha Weir"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6601.jpeg" alt="Lab group at the Portland butterfly mural" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Group</span>
+      <div class="caption-names">Kyri Forman, Meli Rangel, Andrew Budge, Heath Ogden, Kelsey Stone, Tabitha Weir</div>
+      <div class="caption-event">Portland butterfly mural · November 2025</div>
+    </div>
+  </div>
 
-    function showLightboxItem() {
-      visibleItems = getVisibleItems();
-      const item = visibleItems[currentIndex];
-      if (!item) return;
-      const img = item.querySelector('img');
-      const cap = item.querySelector('.caption');
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox-img').alt = img.alt;
-      document.getElementById('lightbox-caption').textContent = cap ? cap.textContent.trim() : '';
-    }
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Heath Ogden, Kyri Forman, Meli Rangel, Andrew Budge, Kelsey Stone, Tabitha Weir (+ Remington)"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6606.jpeg" alt="Lab group selfie at butterfly mural, ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Group</span>
+      <div class="caption-names">Ogden Lab at ESA 2025</div>
+      <div class="caption-event">Portland butterfly mural · November 2025</div>
+    </div>
+  </div>
 
-    function navLightbox(dir) {
-      visibleItems = getVisibleItems();
-      currentIndex = (currentIndex + dir + visibleItems.length) % visibleItems.length;
-      showLightboxItem();
-    }
+  <div class="gallery-item" data-cat="esa talks"
+       data-names="Meli Rangel — Mayfly Wing Wonders: Uncovering Genetic Threads"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6625.jpeg" alt="Meli Rangel giving her talk at ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Talk</span>
+      <div class="caption-names">Meli Rangel</div>
+      <div class="caption-event">"Mayfly Wing Wonders: Uncovering Genetic Threads" · ESA 2025</div>
+    </div>
+  </div>
 
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
+  <div class="gallery-item" data-cat="esa talks"
+       data-names="Heath Ogden — Phylogeny of Mayflies: A New Classification System"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_6626.jpeg" alt="Dr. Heath Ogden at the podium, ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Talk</span>
+      <div class="caption-names">Heath Ogden</div>
+      <div class="caption-event">"Phylogeny of Mayflies: A New Classification System" · ESA 2025</div>
+    </div>
+  </div>
 
-    function closeLightboxOnBg(e) {
-      if (e.target === document.getElementById('lightbox')) closeLightbox();
-    }
+  <div class="gallery-item" data-cat="esa talks"
+       data-names="Heath Ogden — ESA 2025 plenary session"
+       data-event="ESA 2025 · Portland, OR · November 2025">
+    <img src="assets/img/IMG_3809.jpeg" alt="Heath Ogden speaking at ESA 2025" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2025 · Talk</span>
+      <div class="caption-names">Heath Ogden</div>
+      <div class="caption-event">ESA 2025 · Portland, OR · November 2025</div>
+    </div>
+  </div>
 
-    function filterGallery(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        if (cat === 'all' || item.dataset.cat === cat) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
-    }
+</div>
 
-    // Keyboard nav
-    document.addEventListener('keydown', e => {
-      if (!document.getElementById('lightbox').classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') navLightbox(1);
-      if (e.key === 'ArrowLeft') navLightbox(-1);
-    });
-  </script>
+<!-- ═══════════════════════════════════════════
+     ESA 2024 — Phoenix, AZ
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="esa">
+  <h2 class="gallery-section-title">ESA 2024 — Phoenix, AZ</h2>
+  <p class="gallery-section-sub">Entomological Society of America Annual Meeting · November 2024</p>
+</div>
+<div class="gallery" data-section="esa">
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Tabitha Weir — Really Bug Readers: Uncovering Genetic Threats"
+       data-event="ESA 2024 · Phoenix, AZ · November 2024">
+    <img src="assets/img/IMG_3810.jpeg" alt="Tabitha Weir presenting her poster at ESA 2024" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2024 · Poster</span>
+      <div class="caption-names">Tabitha Weir</div>
+      <div class="caption-event">"Really Bug Readers: Uncovering Genetic Threats" · ESA 2024</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Tabitha Weir — Really Bug Readers: Uncovering Genetic Threats"
+       data-event="ESA 2024 · Phoenix, AZ · November 2024">
+    <img src="assets/img/IMG_3811.jpeg" alt="Tabitha Weir at her ESA 2024 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2024 · Poster</span>
+      <div class="caption-names">Tabitha Weir</div>
+      <div class="caption-event">"Really Bug Readers: Uncovering Genetic Threats" · ESA 2024</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Heath Ogden, Tabitha Weir — ESA 2024"
+       data-event="ESA 2024 · Phoenix, AZ · November 2024">
+    <img src="assets/img/IMG_3815.jpeg" alt="Heath Ogden and Tabitha Weir at ESA 2024 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2024 · Poster</span>
+      <div class="caption-names">Heath Ogden &amp; Tabitha Weir</div>
+      <div class="caption-event">"Really Bug Readers: Uncovering Genetic Threats" · ESA 2024</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ESA 2021 — Denver, CO
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="esa">
+  <h2 class="gallery-section-title">ESA 2021 — Denver, CO</h2>
+  <p class="gallery-section-sub">Entomological Society of America Annual Meeting · November 2021</p>
+</div>
+<div class="gallery" data-section="esa">
+
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Heath Ogden, Trevor Millar, Taylor Murphy, Avery Larsen, Ernie Vilela, Jeremy Jensen, Jarod Meecham"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4649.jpeg" alt="Ogden Lab group selfie at ESA 2021 Denver" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Group</span>
+      <div class="caption-names">Ogden, Millar, Murphy, Larsen, Vilela, Jensen, Meecham</div>
+      <div class="caption-event">ESA 2021 · Denver, CO · November 2021</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Taylor Murphy — Molecular Phylogeny of the Mayfly Family Heptageniidae"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4631.jpeg" alt="Taylor Murphy at his ESA 2021 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Poster</span>
+      <div class="caption-names">Taylor Murphy</div>
+      <div class="caption-event">"Molecular Phylogeny of Heptageniidae" · ESA 2021</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Avery Larsen — Genomic Phylogeny of the Most Diverse Mayfly Family"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4635D.jpeg" alt="Avery Larsen at her ESA 2021 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Poster</span>
+      <div class="caption-names">Avery Larsen</div>
+      <div class="caption-event">"Genomic Phylogeny of the Most Diverse Mayfly Family" · ESA 2021</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Jarod Meecham — Is Coloburiscidae Monophyletic? A Test of the Gondwanan Hypothesis"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4639D.jpeg" alt="Jarod Meecham at his ESA 2021 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Poster</span>
+      <div class="caption-names">Jarod Meecham</div>
+      <div class="caption-event">"Is Coloburiscidae Monophyletic?" · ESA 2021</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Ernie Vilela — Bioinformatic Workflow for Genome Assembly from Anchored Hybrid Enrichment Data"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4641.jpeg" alt="Ernie Vilela at his ESA 2021 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Poster</span>
+      <div class="caption-names">Ernie Vilela</div>
+      <div class="caption-event">"Bioinformatic Workflow for Genome Assembly" · ESA 2021</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Taylor Murphy &amp; Heath Ogden — ESA 2021"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4646.jpeg" alt="Taylor Murphy and Heath Ogden at ESA 2021" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Poster</span>
+      <div class="caption-names">Taylor Murphy &amp; Heath Ogden</div>
+      <div class="caption-event">ESA 2021 · Denver, CO · November 2021</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Jeremy Jensen — Replicating Climate Conditions from Southern Arizona: Ecdysial Behaviors in Vinegaroons"
+       data-event="ESA 2021 · Denver, CO · November 2021">
+    <img src="assets/img/IMG_4650.jpeg" alt="Jeremy Jensen at his ESA 2021 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2021 · Poster</span>
+      <div class="caption-names">Jeremy Jensen</div>
+      <div class="caption-event">"Replicating Climate Conditions from Southern Arizona" · ESA 2021</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ESA / Evolution 2017 — Portland, OR
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="esa">
+  <h2 class="gallery-section-title">Evolution &amp; ESA 2017 — Portland, OR</h2>
+  <p class="gallery-section-sub">Evolution Conference &amp; Entomological Society of America · June–July 2017</p>
+</div>
+<div class="gallery" data-section="esa">
+
+  <div class="gallery-item" data-cat="esa group"
+       data-names="Ogden Lab group at ESA 2017 Portland"
+       data-event="ESA 2017 · Portland, OR">
+    <img src="assets/img/IMG_2687.jpeg" alt="Ogden Lab group at ESA 2017 Portland" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">ESA 2017 · Group</span>
+      <div class="caption-names">Ogden Lab at ESA 2017</div>
+      <div class="caption-event">Portland, OR · 2017</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Danny Ferguson &amp; Bryson Carrier — Molecular Analysis of Mayfly Family Baetidae"
+       data-event="Evolution Meeting · Portland, OR · 2017">
+    <img src="assets/img/IMG_2677.jpeg" alt="Danny Ferguson and Bryson Carrier at their poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">Evolution 2017 · Poster</span>
+      <div class="caption-names">Danny Ferguson &amp; Bryson Carrier</div>
+      <div class="caption-event">"Molecular Analysis of Mayfly Family Baetidae" · Portland 2017</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Ishaah Talker — Phylogeny of Mayfly Subfamily Ecdyonurinae"
+       data-event="Evolution Meeting · Portland, OR · 2017">
+    <img src="assets/img/IMG_2690.jpeg" alt="Ishaah Talker at her poster, Evolution 2017" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">Evolution 2017 · Poster</span>
+      <div class="caption-names">Ishaah Talker</div>
+      <div class="caption-event">"Phylogeny of Mayfly Subfamily Ecdyonurinae" · Portland 2017</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="esa posters"
+       data-names="Chad Talbot — Biology Majors Acceptance of Evolution"
+       data-event="Evolution Meeting · Portland, OR · 2017">
+    <img src="assets/img/IMG_2691.jpeg" alt="Chad Talbot at his poster, Evolution 2017" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">Evolution 2017 · Poster</span>
+      <div class="caption-names">Chad Talbot</div>
+      <div class="caption-event">"Biology Majors Acceptance of Evolution" · Portland 2017</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     UCUR 2026 — Ogden, UT
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="ucur">
+  <h2 class="gallery-section-title">UCUR 2026 — Ogden, UT</h2>
+  <p class="gallery-section-sub">Utah Conference on Undergraduate Research · February 2026</p>
+</div>
+<div class="gallery" data-section="ucur">
+
+  <div class="gallery-item" data-cat="ucur group"
+       data-names="Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7729.jpeg" alt="Connor, Heath, Clayton, Meli at UCUR 2026 Ogden" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Group</span>
+      <div class="caption-names">Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel</div>
+      <div class="caption-event">Dee Events Center · Ogden, UT · February 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur group"
+       data-names="Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7730.jpeg" alt="Group photo at UCUR 2026" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Group</span>
+      <div class="caption-names">Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel</div>
+      <div class="caption-event">Dee Events Center · Ogden, UT · February 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur group"
+       data-names="Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7731.jpeg" alt="Lab group at UCUR 2026 Ogden mural" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Group</span>
+      <div class="caption-names">Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel</div>
+      <div class="caption-event">Dee Events Center · Ogden, UT · February 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur group"
+       data-names="Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7732.jpeg" alt="Lab group at UCUR 2026 Dee Events Center" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Group</span>
+      <div class="caption-names">Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel</div>
+      <div class="caption-event">Dee Events Center · Ogden, UT · February 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur group"
+       data-names="Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7733.jpeg" alt="Lab group at UCUR 2026" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Group</span>
+      <div class="caption-names">Connor Sanderson, Heath Ogden, Clayton Taylor, Meli Rangel</div>
+      <div class="caption-event">Dee Events Center · Ogden, UT · February 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Connor Sanderson — Phylogenomic Relationships of Leptophlebiidae"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7723.jpeg" alt="Connor Sanderson presenting at UCUR 2026" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Poster</span>
+      <div class="caption-names">Connor Sanderson</div>
+      <div class="caption-event">"Phylogenomic Relationships of Leptophlebiidae" · UCUR 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Connor Sanderson — Phylogenomic Relationships of Leptophlebiidae"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7724.jpeg" alt="Connor Sanderson's poster at UCUR 2026" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Poster</span>
+      <div class="caption-names">Connor Sanderson</div>
+      <div class="caption-event">"Phylogenomic Relationships of Leptophlebiidae" · UCUR 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Clayton Taylor — Improved Evolution of the Prong-Gilled Mayflies (Leptophlebiidae)"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7725.jpeg" alt="Clayton Taylor at his UCUR 2026 poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Poster</span>
+      <div class="caption-names">Clayton Taylor</div>
+      <div class="caption-event">"Improved Evolution of the Prong-Gilled Mayflies (Leptophlebiidae)" · UCUR 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Clayton Taylor — presenting at UCUR 2026"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7726.jpeg" alt="Clayton Taylor presenting at UCUR 2026" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Poster</span>
+      <div class="caption-names">Clayton Taylor</div>
+      <div class="caption-event">"Improved Evolution of the Prong-Gilled Mayflies (Leptophlebiidae)" · UCUR 2026</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Clayton Taylor — Evolving Minds: Tracking Students' Acceptance of Evolution Over Time"
+       data-event="UCUR 2026 · Ogden, UT · February 2026">
+    <img src="assets/img/IMG_7727.jpeg" alt="Clayton Taylor at his evolution acceptance poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2026 · Poster</span>
+      <div class="caption-names">Clayton Taylor</div>
+      <div class="caption-event">"Evolving Minds: Tracking Students' Acceptance of Evolution Over Time" · UCUR 2026</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     UCUR 2025 — UVU Showcase
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="ucur">
+  <h2 class="gallery-section-title">UVU Showcase &amp; UCUR 2025</h2>
+  <p class="gallery-section-sub">UVU SCULPT Showcase · Spring 2025 &amp; Pacific Branch ESA · March 2025</p>
+</div>
+<div class="gallery" data-section="ucur">
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Kyri Forman — A Population and New Host Record of the Shasta Blue Butterfly in Utah County"
+       data-event="UVU Showcase / Pacific Branch ESA · March–April 2025">
+    <img src="assets/img/IMG_4801.jpeg" alt="Kyri Forman at her Shasta Blue Butterfly poster" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">2025 · Poster</span>
+      <div class="caption-names">Kyri Forman</div>
+      <div class="caption-event">"Shasta Blue Butterfly — New Host Record, Utah County" · 2025</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     UCUR 2023 & UVU Showcase 2022
+═══════════════════════════════════════════ -->
+<div class="gallery-section" data-section="ucur">
+  <h2 class="gallery-section-title">UCUR 2023 &amp; UVU Showcase 2022</h2>
+  <p class="gallery-section-sub">Utah Conference on Undergraduate Research &amp; UVU SCULPT Showcase</p>
+</div>
+<div class="gallery" data-section="ucur">
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Kelsey Stone — The Insects of Capitol Reef: A Collaborative Approach to Creating a Field Guide"
+       data-event="UCUR 2023 · University of Utah · February 2023">
+    <img src="assets/img/IMG_7989.jpeg" alt="Kelsey Stone at her Capitol Reef field guide poster, UCUR 2023" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UCUR 2023 · Poster</span>
+      <div class="caption-names">Kelsey Stone</div>
+      <div class="caption-event">"The Insects of Capitol Reef: A Field Guide" · UCUR 2023</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="ucur posters"
+       data-names="Kelsey Stone — An Interdisciplinary Approach to Creating a Field Guide"
+       data-event="UVU Showcase · Spring 2022">
+    <img src="assets/img/IMG_5079.jpeg" alt="Kelsey Stone at her field guide poster, UVU Showcase 2022" loading="lazy" />
+    <div class="caption">
+      <span class="cat-badge">UVU Showcase 2022 · Poster</span>
+      <div class="caption-names">Kelsey Stone</div>
+      <div class="caption-event">"An Interdisciplinary Approach to Creating a Field Guide" · Spring 2022</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<footer>
+  <span>© Ogden Lab · Utah Valley University</span>
+  <a href="index.html">← Back to Home</a>
+</footer>
+
+<script>
+let currentIndex = 0;
+let visibleItems = [];
+
+// Build full photo data from DOM on load
+function getAllItems() {
+  return [...document.querySelectorAll('.gallery-item:not(.hidden)')];
+}
+
+document.querySelectorAll('.gallery-item').forEach((item, i) => {
+  item.addEventListener('click', () => {
+    visibleItems = getAllItems();
+    currentIndex = visibleItems.indexOf(item);
+    if (currentIndex < 0) currentIndex = 0;
+    showLightboxItem();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function showLightboxItem() {
+  visibleItems = getAllItems();
+  const item = visibleItems[currentIndex];
+  if (!item) return;
+  const img = item.querySelector('img');
+  const names = item.dataset.names || '';
+  const event = item.dataset.event || '';
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-img').alt = img.alt;
+  const cap = document.getElementById('lightbox-caption');
+  cap.innerHTML = (names ? `<strong>${names}</strong>` : '') + (event ? `<span>${event}</span>` : '');
+}
+
+function navLightbox(dir) {
+  visibleItems = getAllItems();
+  currentIndex = (currentIndex + dir + visibleItems.length) % visibleItems.length;
+  showLightboxItem();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOnBg(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const cats = item.dataset.cat ? item.dataset.cat.split(' ') : [];
+    const show = cat === 'all' || cats.includes(cat);
+    item.classList.toggle('hidden', !show);
+  });
+
+  // Hide section headings if all items in that section are hidden
+  document.querySelectorAll('.gallery-section').forEach(section => {
+    const sectionCat = section.dataset.section;
+    const sibling = section.nextElementSibling;
+    if (!sibling) return;
+    const items = sibling.querySelectorAll('.gallery-item');
+    const anyVisible = [...items].some(i => !i.classList.contains('hidden'));
+    section.classList.toggle('hidden', !anyVisible);
+    sibling.style.paddingBottom = anyVisible ? '' : '0';
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+});
+</script>
+
 </body>
 </html>
