@@ -54,6 +54,13 @@
     .alumni-section{background:var(--bg2);padding:3rem 6rem;}
     .alumni-section h2{font-family:var(--serif);font-size:1.4rem;color:var(--ink2);margin-bottom:0.5rem;}
     .alumni-sub{font-size:0.875rem;color:var(--ink2);margin-bottom:2rem;font-weight:300;}
+    .alumni-photo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem;margin-bottom:2.5rem;}
+    .alumni-photo-card{display:flex;flex-direction:column;align-items:center;gap:0.5rem;}
+    .alumni-thumb{width:100px;height:100px;border-radius:3px;overflow:hidden;background:var(--bg);flex-shrink:0;}
+    .alumni-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .alumni-thumb-name{font-size:0.78rem;color:var(--ink2);text-align:center;line-height:1.3;}
+    .alumni-thumb-name.presented::before{content:'★ ';color:var(--gold);font-size:0.75rem;}
+    .alumni-divider{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink2);opacity:0.5;margin-bottom:1rem;}
     .alumni-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem 1.5rem;}
     .alumni-name{font-size:0.85rem;color:var(--ink2);padding:0.3rem 0;border-bottom:1px solid var(--border);}
     .alumni-name.presented::before{content:'★ ';color:var(--gold);font-size:0.8rem;}
@@ -63,6 +70,7 @@
       .page-header,.pi-section,.students-section,.alumni-section{padding:3rem 1.5rem;}
       .pi-card{grid-template-columns:1fr;}
       .student-grid{grid-template-columns:1fr 1fr;}
+      .alumni-photo-grid{grid-template-columns:repeat(3,1fr);}
       .alumni-grid{grid-template-columns:1fr 1fr;}
       footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
       .nav-links{gap:1rem;}
@@ -173,7 +181,43 @@
   <!-- ALUMNI -->
   <div class="alumni-section">
     <h2>Alumni</h2>
-    <p class="alumni-sub">★ = completed senior thesis or presented research at a scientific meeting (87 total undergraduate research alumni)</p>
+    <p class="alumni-sub">★ = completed senior thesis or presented research at a scientific meeting</p>
+
+    <!-- Photo thumbnails (populated so far — more coming) -->
+    <div class="alumni-divider">Recent Alumni</div>
+    <div class="alumni-photo-grid">
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/tabitha-weir.jpeg" alt="Tabitha Weir" /></div>
+        <div class="alumni-thumb-name presented">Tabitha Weir</div>
+      </div>
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/avery-larsen.jpeg" alt="Avery Larsen" /></div>
+        <div class="alumni-thumb-name presented">Avery Larsen</div>
+      </div>
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/jeremy-jensen.jpeg" alt="Jeremy Jensen" /></div>
+        <div class="alumni-thumb-name presented">Jeremy Jensen</div>
+      </div>
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/jarod-meecham.jpeg" alt="Jarod Meecham" /></div>
+        <div class="alumni-thumb-name presented">Jarod Meecham</div>
+      </div>
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/taylor-murphy.jpeg" alt="Taylor Murphy" /></div>
+        <div class="alumni-thumb-name presented">Taylor Murphy</div>
+      </div>
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/ishaah-talker.jpeg" alt="Ishaah Talker" /></div>
+        <div class="alumni-thumb-name presented">Ishaah Talker</div>
+      </div>
+      <div class="alumni-photo-card">
+        <div class="alumni-thumb"><img src="assets/img/portraits/alumni/chad-talbot.jpeg" alt="Chad Talbot" /></div>
+        <div class="alumni-thumb-name presented">Chad Talbot</div>
+      </div>
+    </div>
+
+    <!-- All alumni name list -->
+    <div class="alumni-divider">All Alumni</div>
     <div class="alumni-grid">
       <div class="alumni-name presented">Kelsey Stone</div>
       <div class="alumni-name presented">Andrew Butler</div>
@@ -209,6 +253,21 @@
       <div class="alumni-name presented">Tyler Smith</div>
       <div class="alumni-name presented">Michael Cookson</div>
       <div class="alumni-name presented">Louis Eubank</div>
+      <div class="alumni-name presented">Samantha Telarroja</div>
+      <div class="alumni-name presented">Albert Zylstra</div>
+      <div class="alumni-name presented">Corey Barger</div>
+      <div class="alumni-name presented">Josh Holmes</div>
+      <div class="alumni-name presented">Robert Putnam</div>
+      <div class="alumni-name presented">Tanner Mortimer</div>
+      <div class="alumni-name presented">Jeffrey Leavitt</div>
+      <div class="alumni-name presented">Jacob Burnett</div>
+      <div class="alumni-name presented">James Barber</div>
+      <div class="alumni-name presented">Aaron Fairbourn</div>
+      <div class="alumni-name presented">Isaac Seal</div>
+      <div class="alumni-name presented">Nick Newell</div>
+      <div class="alumni-name presented">Heidi Kipp</div>
+      <div class="alumni-name presented">Jon Lund</div>
+      <div class="alumni-name presented">Zach Nielsen</div>
       <div class="alumni-name">And many more...</div>
     </div>
   </div>
