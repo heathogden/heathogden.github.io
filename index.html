@@ -68,7 +68,6 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--accent); }
 
     /* HERO */
     .hero {
@@ -505,23 +504,46 @@
       footer { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 2rem; }
       .footer-bottom { padding: 1rem 2rem; flex-direction: column; gap: 0.5rem; }
     }
+  
+    nav{position:sticky;top:0;background:rgba(250,248,243,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:200;}
+    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;flex-shrink:0;}
+    .nav-brand span{color:var(--accent);}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:stretch;}
+    .nav-links > li{position:relative;display:flex;align-items:center;}
+    .nav-links > li > a,.nav-links > li > span{font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0 0.85rem;height:64px;display:flex;align-items:center;cursor:pointer;transition:color 0.2s;white-space:nowrap;border:none;background:none;font-family:var(--sans);}
+    .nav-links > li > a:hover,.nav-links > li > span:hover,.nav-links > li:hover > span{color:var(--accent);}
+    .nav-links > li > a.active{color:var(--accent);}
+    .dropdown{position:absolute;top:64px;left:0;background:#fff;border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:0 0 4px 4px;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity 0.18s,transform 0.18s;z-index:300;}
+    .nav-links > li:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown a{display:block;font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:0.65rem 1.1rem;letter-spacing:0.03em;border-bottom:1px solid var(--border);transition:background 0.15s,color 0.15s;}
+    .dropdown a:last-child{border-bottom:none;}
+    .dropdown a:hover{background:var(--bg2);color:var(--accent);}
+    .dropdown a.join-link{color:var(--accent);font-weight:600;}
+    .dropdown a.join-link:hover{background:var(--accent);color:#fff;}
+    .chevron{font-size:0.6rem;margin-left:0.3rem;opacity:0.6;}
   </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="people.html">People</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="presentations.html">Presentations</a></li>
-      <li><a href="photos.html">Photos</a></li>
-      <li><a href="join.html">Join</a></li>
-    </ul>
-  </nav>
+  <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li>
+      <span>About <span class="chevron">▾</span></span>
+      <div class="dropdown">
+        <a href="about.html">About Dr. Ogden</a>
+        <a href="people.html">Research Team</a>
+        <a href="photos.html">Lab Photos</a>
+        <a href="join.html" class="join-link">Join the Lab</a>
+      </div>
+    </li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+  </ul>
+</nav>
 
   <!-- HERO -->
   <section class="hero" id="home">

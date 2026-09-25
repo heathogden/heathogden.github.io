@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Dr. Ogden | Ogden Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#faf8f3;--bg2:#f0ede4;--ink:#1a1a18;--ink2:#4a4a42;--accent:#2d6a4f;--accent2:#52b788;--gold:#c9a84c;--border:rgba(26,26,24,0.12);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
+
+    /* ── Nav with dropdown ── */
+    nav{position:sticky;top:0;background:rgba(250,248,243,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:200;}
+    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;flex-shrink:0;}
+    .nav-brand span{color:var(--accent);}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:stretch;}
+    .nav-links > li{position:relative;display:flex;align-items:center;}
+    .nav-links > li > a,.nav-links > li > span{font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0 0.85rem;height:64px;display:flex;align-items:center;cursor:pointer;transition:color 0.2s;white-space:nowrap;border:none;background:none;font-family:var(--sans);}
+    .nav-links > li > a:hover,.nav-links > li > span:hover,.nav-links > li:hover > span{color:var(--accent);}
+    .nav-links > li > a.active{color:var(--accent);}
+    /* dropdown */
+    .dropdown{position:absolute;top:64px;left:0;background:#fff;border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:0 0 4px 4px;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity 0.18s,transform 0.18s;z-index:300;}
+    .nav-links > li:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown a{display:block;font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:0.65rem 1.1rem;letter-spacing:0.03em;border-bottom:1px solid var(--border);transition:background 0.15s,color 0.15s;}
+    .dropdown a:last-child{border-bottom:none;}
+    .dropdown a:hover{background:var(--bg2);color:var(--accent);}
+    .dropdown a.join-link{color:var(--accent);font-weight:600;}
+    .dropdown a.join-link:hover{background:var(--accent);color:#fff;}
+    .chevron{font-size:0.6rem;margin-left:0.3rem;opacity:0.6;}
+
+    /* ── Page hero ── */
+    .page-header{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:4rem 6rem 3rem;}
+    .breadcrumb{font-size:0.72rem;opacity:0.6;margin-bottom:1rem;letter-spacing:0.05em;}
+    .breadcrumb a{color:rgba(255,255,255,0.7);text-decoration:none;}
+    .breadcrumb a:hover{color:#fff;}
+    .page-title{font-family:var(--serif);font-size:2.8rem;}
+
+    /* ── Main two-column layout ── */
+    .about-wrap{max-width:1100px;margin:0 auto;padding:4rem 6rem;display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start;}
+    /* sticky sidebar */
+    .about-sidebar{position:sticky;top:80px;}
+    .sidebar-photo{border-radius:4px;overflow:hidden;aspect-ratio:1;background:var(--bg2);margin-bottom:1.25rem;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+    .sidebar-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .sidebar-name{font-family:var(--serif);font-size:1.5rem;margin-bottom:0.2rem;}
+    .sidebar-title{font-size:0.78rem;color:var(--accent);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.15rem;}
+    .sidebar-inst{font-size:0.82rem;color:var(--ink2);margin-bottom:1rem;}
+    .sidebar-pronouns{font-size:0.78rem;color:var(--ink2);opacity:0.65;margin-bottom:1.25rem;}
+    .sidebar-links{display:flex;flex-direction:column;gap:0.5rem;}
+    .sidebar-link{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;font-weight:500;color:var(--accent);text-decoration:none;padding:0.45rem 0.85rem;border:1.5px solid var(--accent);border-radius:100px;transition:all 0.2s;justify-content:center;}
+    .sidebar-link:hover{background:var(--accent);color:#fff;}
+    .sidebar-contact{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .sidebar-contact-title{font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink2);opacity:0.5;margin-bottom:0.6rem;}
+    .sidebar-contact p{font-size:0.78rem;color:var(--ink2);margin-bottom:0.2rem;}
+    .sidebar-contact a{color:var(--accent);text-decoration:none;}
+
+    /* ── Bio content ── */
+    .about-content{}
+    .bio-lead{font-family:var(--serif);font-size:1.15rem;color:var(--ink);font-style:italic;margin-bottom:1.5rem;line-height:1.6;}
+    .bio-body{font-size:0.95rem;color:var(--ink2);font-weight:300;margin-bottom:1rem;line-height:1.8;}
+
+    /* ── Section headings ── */
+    .content-section{margin-top:3rem;}
+    .content-section-title{font-family:var(--serif);font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
+
+    /* ── Education timeline ── */
+    .timeline{display:flex;flex-direction:column;gap:0;}
+    .timeline-item{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);align-items:start;}
+    .timeline-item:last-child{border-bottom:none;}
+    .timeline-logo{width:100%;aspect-ratio:1;border-radius:3px;overflow:hidden;background:var(--bg2);display:flex;align-items:center;justify-content:center;padding:0.75rem;}
+    .timeline-logo img{width:100%;height:auto;object-fit:contain;}
+    .timeline-logo-text{font-family:var(--serif);font-size:0.9rem;font-weight:700;color:var(--accent);text-align:center;line-height:1.2;}
+    .timeline-role{font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:0.15rem;}
+    .timeline-place{font-size:0.85rem;color:var(--ink2);margin-bottom:0.15rem;}
+    .timeline-dates{font-size:0.75rem;color:var(--accent2);font-weight:600;letter-spacing:0.05em;margin-bottom:0.5rem;}
+    .timeline-desc{font-size:0.84rem;color:var(--ink2);font-weight:300;line-height:1.6;}
+    .timeline-desc a{color:var(--accent);text-decoration:none;}
+    .timeline-desc a:hover{text-decoration:underline;}
+
+    /* ── Outside the lab ── */
+    .interests-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+    .interests-list li{font-size:0.9rem;color:var(--ink2);font-weight:300;padding:0.5rem 0;border-bottom:1px solid var(--border);}
+    .interests-list li:last-child{border-bottom:none;}
+    .interests-list li strong{color:var(--ink);}
+
+    /* ── Awards block ── */
+    .awards-grid{display:flex;flex-direction:column;gap:0;}
+    .award-row{display:flex;gap:1rem;align-items:baseline;padding:0.65rem 0;border-bottom:1px solid var(--border);font-size:0.875rem;}
+    .award-row:last-child{border-bottom:none;}
+    .award-year{font-size:0.72rem;font-weight:600;letter-spacing:0.06em;color:var(--ink2);opacity:0.55;min-width:36px;}
+    .award-icon{font-size:0.95rem;min-width:22px;}
+    .award-text{color:var(--ink2);font-weight:300;flex:1;}
+    .award-text strong{color:var(--ink);font-weight:500;}
+
+    /* ── Join CTA (last section) ── */
+    .join-section{margin-top:3rem;background:var(--accent);border-radius:4px;padding:2.5rem;color:#fff;}
+    .join-section h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:0.75rem;}
+    .join-section p{font-size:0.9rem;opacity:0.88;font-weight:300;margin-bottom:1.5rem;max-width:500px;line-height:1.7;}
+    .join-btn{display:inline-block;background:#fff;color:var(--accent);font-weight:600;font-size:0.85rem;padding:0.7rem 1.75rem;border-radius:100px;text-decoration:none;transition:opacity 0.2s;}
+    .join-btn:hover{opacity:0.88;}
+
+    footer{background:#0f1f18;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
+    footer a{color:var(--accent2);text-decoration:none;}
+
+    @media(max-width:900px){
+      .page-header{padding:3rem 1.5rem 2.5rem;}
+      .about-wrap{grid-template-columns:1fr;padding:2rem 1.5rem;gap:2rem;}
+      .about-sidebar{position:static;}
+      footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
+      .nav-links > li > a,.nav-links > li > span{padding:0 0.6rem;font-size:0.72rem;}
+      .timeline-item{grid-template-columns:70px 1fr;gap:1rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <span>About <span class="chevron">▾</span></span>
+      <div class="dropdown">
+        <a href="about.html" class="active">About Dr. Ogden</a>
+        <a href="people.html">Research Team</a>
+        <a href="photos.html">Lab Photos</a>
+        <a href="join.html" class="join-link">Join the Lab</a>
+      </div>
+    </li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; About</div>
+  <h1 class="page-title">About Dr. Ogden</h1>
+</div>
+
+<!-- Main -->
+<div class="about-wrap">
+
+  <!-- Sidebar -->
+  <aside class="about-sidebar">
+    <div class="sidebar-photo">
+      <img src="assets/img/portraits/heath-ogden.jpeg" alt="Dr. T. Heath Ogden" />
+    </div>
+    <div class="sidebar-name">Dr. T. Heath Ogden</div>
+    <div class="sidebar-title">Professor &amp; Chair</div>
+    <div class="sidebar-inst">Department of Biology<br>Utah Valley University</div>
+    <div class="sidebar-pronouns">Pronouns: He/Him</div>
+    <div class="sidebar-links">
+      <a class="sidebar-link" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a>
+      <a class="sidebar-link" href="assets/publications/CV.pdf" target="_blank">Download CV</a>
+      <a class="sidebar-link" href="https://www.uvu.edu/directory/employee/?id=aGVhdGhvZ2Rl" target="_blank">UVU Profile</a>
+    </div>
+    <div class="sidebar-contact">
+      <div class="sidebar-contact-title">Contact</div>
+      <p><strong>Office:</strong> SB 243A</p>
+      <p><strong>Phone:</strong> (801) 863-6909</p>
+      <p><strong>Email:</strong> <a href="mailto:heath.ogden@uvu.edu">heath.ogden@uvu.edu</a></p>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <div class="about-content">
+
+    <p class="bio-lead">Evolutionary biologist, biology educator, and mayfly enthusiast at Utah Valley University.</p>
+
+    <p class="bio-body">I grew up with a deep curiosity about the natural world, which eventually led me to study zoology at BYU. As an undergraduate, I discovered that the real excitement of biology wasn't just in textbooks — it was in the open questions. That realization sent me to Chile for my master's, back to BYU for my PhD, and then to Arizona State University for my postdoctoral work, before joining UVU in 2009.</p>
+
+    <p class="bio-body">My research sits at the intersection of insect evolution, phylogenomics, and biology education. I use molecular and morphological data to reconstruct the evolutionary history of mayflies (Ephemeroptera) and other basal winged insects — questions about the origin of flight, the evolution of mayfly morphology, and the forces shaping genome diversity. A second thread of my work focuses on pedagogy: how students learn evolution, what improves acceptance of evolutionary theory, and how teaching methods like flipped classrooms affect learning outcomes.</p>
+
+    <p class="bio-body">One of the most rewarding parts of this work has been doing it alongside undergraduate researchers. Every project in this lab has been driven by students — their questions, their effort, and their discoveries. I know firsthand how transformative an undergraduate research experience can be, and providing those opportunities is something I take seriously.</p>
+
+    <p class="bio-body">In 2023 I became Chair of the Biology Department at UVU, a role that has added new dimensions to the work — supporting colleagues, building curriculum, and helping the department grow — while keeping my research and my students at the center.</p>
+
+    <!-- Education & Experience -->
+    <div class="content-section">
+      <h2 class="content-section-title">Education &amp; Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <img src="assets/img/uvu-logo.png" alt="UVU" onerror="this.parentElement.innerHTML='<div class=\'timeline-logo-text\'>UVU</div>'" />
+          </div>
+          <div>
+            <div class="timeline-role">Professor &amp; Chair, Department of Biology</div>
+            <div class="timeline-place">Utah Valley University · Orem, UT</div>
+            <div class="timeline-dates">2023 – Present</div>
+            <div class="timeline-desc">Leading the Department of Biology while maintaining an active research program in insect phylogenomics and biology education.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <div class="timeline-logo-text">UVU</div>
+          </div>
+          <div>
+            <div class="timeline-role">Associate Professor, Department of Biology</div>
+            <div class="timeline-place">Utah Valley University · Orem, UT</div>
+            <div class="timeline-dates">2009 – 2023</div>
+            <div class="timeline-desc">Built the Ogden Lab from the ground up, establishing research programs in Ephemeroptera phylogenomics, biology education, and insect diversity.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <div class="timeline-logo-text">ASU</div>
+          </div>
+          <div>
+            <div class="timeline-role">Postdoctoral Research Fellow</div>
+            <div class="timeline-place">Arizona State University · Tempe, AZ</div>
+            <div class="timeline-dates">2004 – 2009</div>
+            <div class="timeline-desc">Postdoctoral research in insect systematics and molecular phylogenetics.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <div class="timeline-logo-text">BYU</div>
+          </div>
+          <div>
+            <div class="timeline-role">Ph.D. in Integrative Biology</div>
+            <div class="timeline-place">Brigham Young University · Provo, UT</div>
+            <div class="timeline-dates">2000 – 2004</div>
+            <div class="timeline-desc"><em>Dissertation:</em> Phylogenetics of basal winged insects (Paleoptera). Ernst Mayr Award Finalist, Evolution 2004 &amp; 2005.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <div class="timeline-logo-text" style="font-size:0.7rem;">U de C</div>
+          </div>
+          <div>
+            <div class="timeline-role">M.S. in Biology</div>
+            <div class="timeline-place">Universidad de Concepción · Concepción, Chile</div>
+            <div class="timeline-dates">1996 – 2000</div>
+            <div class="timeline-desc">Master's research in insect systematics and South American entomology.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <div class="timeline-logo-text">BYU</div>
+          </div>
+          <div>
+            <div class="timeline-role">B.S. in Zoology</div>
+            <div class="timeline-place">Brigham Young University · Provo, UT</div>
+            <div class="timeline-dates">1992 – 1996</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Selected Awards -->
+    <div class="content-section">
+      <h2 class="content-section-title">Selected Awards &amp; Funding</h2>
+      <div class="awards-grid">
+        <div class="award-row"><span class="award-year">2024</span><span class="award-icon">🏆</span><span class="award-text"><strong>UVU Global Spotlight Award</strong></span></div>
+        <div class="award-row"><span class="award-year">2020</span><span class="award-icon">🏆</span><span class="award-text"><strong>UVU Faculty Excellence Award</strong></span></div>
+        <div class="award-row"><span class="award-year">2015</span><span class="award-icon">🔬</span><span class="award-text"><strong>NSF EAGER Grant</strong> — Phylogeny of Mayflies, $150,000 + supplemental funding</span></div>
+        <div class="award-row"><span class="award-year">2014</span><span class="award-icon">🏆</span><span class="award-text"><strong>UVU Trustee Award of Excellence</strong></span></div>
+        <div class="award-row"><span class="award-year">2004</span><span class="award-icon">📚</span><span class="award-text"><strong>Ernst Mayr Award Finalist</strong> — Evolution Conference 2004 &amp; 2005</span></div>
+        <div class="award-row"><span class="award-year"></span><span class="award-icon">💰</span><span class="award-text">Total career research funding: <strong>$850,000+</strong></span></div>
+      </div>
+    </div>
+
+    <!-- Outside the Lab -->
+    <div class="content-section">
+      <h2 class="content-section-title">Outside the Lab</h2>
+      <ul class="interests-list">
+        <li><strong>Field work</strong> — collecting mayflies and other insects across Utah watersheds</li>
+        <li><strong>[Add your interests here]</strong> — e.g. hiking, music, family activities</li>
+        <li><strong>[Add more]</strong> — anything you'd like students and visitors to know about you</li>
+      </ul>
+    </div>
+
+    <!-- Join CTA — last item -->
+    <div class="join-section">
+      <h3>Interested in Joining the Lab?</h3>
+      <p>Undergraduate researchers at all experience levels are welcome. No prior research experience required — just curiosity and commitment. Projects span phylogenomics, field entomology, bioinformatics, and biology education research.</p>
+      <a class="join-btn" href="join.html">Learn How to Apply →</a>
+    </div>
+
+  </div><!-- /about-content -->
+</div><!-- /about-wrap -->
+
+<footer>
+  <span>© Ogden Lab · Utah Valley University</span>
+  <a href="index.html">← Back to Home</a>
+</footer>
+
+</body>
+</html>
