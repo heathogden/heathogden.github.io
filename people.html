@@ -105,6 +105,35 @@
     .dropdown a.join-link{color:var(--accent);font-weight:600;}
     .dropdown a.join-link:hover{background:var(--accent);color:#fff;}
     .chevron{font-size:0.6rem;margin-left:0.3rem;opacity:0.6;}
+  
+    /* ── Alumni section (Hjelmen-style horizontal cards) ── */
+    .alumni-section-wrap { background: var(--bg); padding: 3.5rem 6rem 4rem; }
+    .alumni-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .alumni-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg2);
+      transition: box-shadow 0.2s, transform 0.2s;
+      margin-bottom: 10px;
+    }
+    .alumni-card:hover { box-shadow: 0 4px 14px rgba(45,106,79,0.10); transform: translateX(3px); }
+    .ac-photo {
+      width: 64px; height: 64px; border-radius: 50%;
+      object-fit: cover; object-position: top center;
+      flex-shrink: 0; border: 2px solid var(--border);
+    }
+    .ac-blank {
+      background: var(--bg2); display: flex; align-items: center;
+      justify-content: center; color: var(--accent2); font-size: 1.4rem;
+      border: 2px solid var(--border);
+    }
+    .ac-body { flex: 1; min-width: 0; }
+    .ac-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .ac-star { color: var(--gold); font-size: 0.75rem; }
+    .ac-project { font-size: 0.8rem; color: var(--ink2); font-weight: 300; line-height: 1.45; margin-bottom: 5px; }
+    .ac-meta { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+    .ac-dates { font-size: 0.72rem; color: var(--accent); font-weight: 600; background: var(--bg2); border: 1px solid var(--border); padding: 1px 7px; border-radius: 4px; }
+    @media(max-width:900px){ .alumni-cols{grid-template-columns:1fr;} .alumni-section-wrap{padding:2rem 1.5rem;} }
   </style>
 </head>
 <body>
@@ -240,175 +269,738 @@
 </div>
 
 <!-- ALUMNI WITH PHOTOS -->
-<div class="section alt">
-  <div class="section-header">
+<div class="alumni-section-wrap">
+  <div class="section-header" style="padding:0 0 0.4rem;">
     <h2 class="section-title">Research Alumni</h2>
     <span class="section-count">81 researchers</span>
   </div>
-  <p class="section-sub">Former lab members have gone on to graduate programs, industry, and careers in science. We're proud of every one of them.</p>
-  <div class="member-grid">
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/tabitha-weir.jpeg" alt="Tabitha Weir" /></div>
-      <div class="member-body">
-        <div class="member-name">Tabitha Weir</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Mayflies of Utah monograph; DNA barcoding &amp; taxonomy of Utah Ephemeroptera</div>
-        <div class="member-dates">2021 – 2025 &nbsp;·&nbsp; UVU Senior Thesis 2025</div>
-      </div>
+  <p class="section-sub" style="margin-bottom:2rem;">Former lab members who contributed to research in the Ogden Lab.
+    <span style="font-size:0.8rem;"><span class="ac-star">★</span> = completed senior thesis or presented at a scientific meeting.</span></p>
+  <!-- Bootstrap Icons for person placeholder -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <div class="alumni-cols">
+    <div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Brian Armstrong</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Natalia Backman</div>
+                <div class="ac-project">Siphlonuridae phylogenetics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2019–2020</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> James Barber</div>
+                <div class="ac-project">Insects of Capitol Reef NP</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2010</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Melanie Barber</div>
+                <div class="ac-project">Southern Utah insect collecting</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2010</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Corey Barger</div>
+                <div class="ac-project">Burrowing mayfly phylogenetics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2012</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Chase Barker</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2012</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Stephanie Bartlett</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2015</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Sawyer Baum</div>
+                <div class="ac-project">Student understanding of evolution</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2022–2023</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Austin Bettridge</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Nikk Bobo</div>
+                <div class="ac-project">Insects of Capitol Reef NP</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2010</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Dalton Brady</div>
+                <div class="ac-project">Protective gills in Caenoidea</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2016–2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Nicholas Brian</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jacob Burnett</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2010</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Andrew (Charles) Butler</div>
+                <div class="ac-project">Phylogenomics of Leptophlebiidae</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2023</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Bryson Carrier</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Austin Carter</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Trevor Chamberlain</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jordan Clawson</div>
+                <div class="ac-project">Molecular phylogeny of Heptageniidae</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2018</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Michael Cookson</div>
+                <div class="ac-project">UVU Integrative Studies Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jacob Delano</div>
+                <div class="ac-project">Opsin evolution &amp; transcriptomics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2018</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Shannon Deurden</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Robert Erickson</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2015</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Mathew Ethington</div>
+                <div class="ac-project">Capitol Reef insects &amp; Ameletopsidae</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011–2013</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Louis Eubank</div>
+                <div class="ac-project">Ephemerellidae &amp; Pannota phylogenetics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011–2012</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Aaron Fairbanks</div>
+                <div class="ac-project">NANOGP8 research</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2012–2013</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Aaron Fairbourn</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Danny Ferguson</div>
+                <div class="ac-project">Baetidae phylogenetics; PhD candidate BYU</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Dave Fisher</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Trevor Gatenby</div>
+                <div class="ac-project">Baetidae evolution</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2013–2014</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Ashton Godfrey</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Brian Hatch</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2015</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Gary Hatch</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Josh Holmes</div>
+                <div class="ac-project">Burrowing mayfly phylogenetics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2012</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Emily Hyer</div>
+                <div class="ac-project">Baetidae phylogenetics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2020</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/jeremy-jensen.jpeg" alt="Jeremy Jensen" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jeremy Jensen</div>
+                <div class="ac-project">Insects of Capitol Reef field guide; vinegaroon behavior</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2020–2024</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Ruben Jimenez</div>
+                <div class="ac-project">Superfamily Ephemerelloidea</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Derek Johnson</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Hayden Kallis</div>
+                <div class="ac-project">Superfamily Ephemerelloidea</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Heidi Kipp</div>
+                <div class="ac-project">Parthenogenetic mayfly instars</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2024</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Karina Kirk Larsen</div>
+                <div class="ac-project">Western US insect specimens for UVU entomology course</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2010</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/avery-larsen.jpeg" alt="Avery Larsen" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Avery Larsen</div>
+                <div class="ac-project">Genomic phylogeny of Baetidae</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2021–2024</span>
+              </div>
+              </div>
+            </div>
     </div>
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/avery-larsen.jpeg" alt="Avery Larsen" /></div>
-      <div class="member-body">
-        <div class="member-name">Avery Larsen</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Genomic phylogeny of the most diverse mayfly family (Baetidae)</div>
-        <div class="member-dates">2021 – 2024 &nbsp;·&nbsp; UVU Senior Thesis 2024</div>
-      </div>
+    <div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jeffrey Leavitt</div>
+                <div class="ac-project">Ephemerellidae phylogeny</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2013</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Xavier Leiva</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jake Loveless</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2014</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jon Lund</div>
+                <div class="ac-project">Science relevance &amp; evolution acceptance</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2023</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/jarod-meecham.jpeg" alt="Jarod Meecham" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jarod Meecham</div>
+                <div class="ac-project">Is <em>Coloburiscidae</em> monophyletic? A test of the Gondwanan hypothesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2019–2022</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Trevor Millar</div>
+                <div class="ac-project">Anchored hybrid enrichment &amp; phylogenomics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2021–2023</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Dustin Miller</div>
+                <div class="ac-project">Burrowing mayfly phylogenomics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2017–2018</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> CaBri Montero</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Baden Morrill</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Tanner Mortimer</div>
+                <div class="ac-project">Perceptions of evolution research</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2013–2014</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/taylor-murphy.jpeg" alt="Taylor Murphy" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Taylor Murphy</div>
+                <div class="ac-project">Molecular phylogeny of Heptageniidae</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2020–2022</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Julie Nance</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Nick Newell</div>
+                <div class="ac-project">Cave arthropods survey</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2018</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Ammy Nielsen</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Zach Nielsen</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Damilola Ogunbayode</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Daniel Oler</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Katie Peatross</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Charles Pullen</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Robert Putnam</div>
+                <div class="ac-project">Pannota (fused-back mayflies)</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2013</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jake Reed</div>
+                <div class="ac-project">DNA barcoding of Vietnamese mayflies</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2020–2021</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jacob Robinson</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jarom Schow</div>
+                <div class="ac-project">Snapshot taxonomy-driven tool</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2013</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Isaac Seal</div>
+                <div class="ac-project">Transcriptomics of Ephemeroptera</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2020</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Adam Simmons</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Mike Simons</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Tyler Smith</div>
+                <div class="ac-project">UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2012</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Kelsey Stone</div>
+                <div class="ac-project">Insects of Capitol Reef field guide</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2022–2023</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">Joseph Summerhays</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/chad-talbot.jpeg" alt="Chad Talbot" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Chad Talbot</div>
+                <div class="ac-project">Biology majors' acceptance of evolution</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2018–2020</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/ishaah-talker.jpeg" alt="Ishaah Talker" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Ishaah Talker</div>
+                <div class="ac-project">Phylogeny of mayfly subfamily Ecdyonurinae</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2016–2017</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Samantha Telarroja</div>
+                <div class="ac-project">Ephemerellidae &amp; Pannota phylogenetics</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011–2012</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Mark Tingey</div>
+                <div class="ac-project">Basal pterygote relationships</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2013</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name">David Tregaskis</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Mary Vallecillo</div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Ernie Vilela</div>
+                <div class="ac-project">Genome assembly bioinformatics; UVU Senior Thesis</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2019–2023</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <img src="assets/img/portraits/alumni/tabitha-weir.jpeg" alt="Tabitha Weir" class="ac-photo">
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Tabitha Weir</div>
+                <div class="ac-project">Mayflies of Utah monograph &amp; DNA barcoding</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2021–2025</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Jed Whetten</div>
+                <div class="ac-project">DNA barcoding of Vietnamese mayflies</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2020–2021</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Albert Zylstra</div>
+                <div class="ac-project">Baetidae phylogeny</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011</span>
+              </div>
+              </div>
+            </div>
+            <div class="alumni-card">
+              <div class="ac-photo ac-blank"><i class="bi bi-person"></i></div>
+              <div class="ac-body">
+                <div class="ac-name"><span class="ac-star">★</span> Trevor Zobell</div>
+                <div class="ac-project">The Paleoptera Problem: Revisited</div>
+              <div class="ac-meta">
+                  <span class="ac-dates">2011</span>
+              </div>
+              </div>
+            </div>
     </div>
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/jeremy-jensen.jpeg" alt="Jeremy Jensen" /></div>
-      <div class="member-body">
-        <div class="member-name">Jeremy Jensen</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Insects of Capitol Reef field guide; ecdysial behavior in vinegaroons</div>
-        <div class="member-dates">2020 – 2024 &nbsp;·&nbsp; UVU Senior Thesis 2021</div>
-      </div>
-    </div>
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/jarod-meecham.jpeg" alt="Jarod Meecham" /></div>
-      <div class="member-body">
-        <div class="member-name">Jarod Meecham</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Is Coloburiscidae monophyletic? A test of the Gondwanan hypothesis</div>
-        <div class="member-dates">2019 – 2022</div>
-      </div>
-    </div>
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/taylor-murphy.jpeg" alt="Taylor Murphy" /></div>
-      <div class="member-body">
-        <div class="member-name">Taylor Murphy</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Molecular phylogeny of Heptageniidae (Ephemeroptera)</div>
-        <div class="member-dates">2020 – 2022</div>
-      </div>
-    </div>
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/ishaah-talker.jpeg" alt="Ishaah Talker" /></div>
-      <div class="member-body">
-        <div class="member-name">Ishaah Talker</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Phylogeny of the mayfly subfamily Ecdyonurinae (Heptageniidae)</div>
-        <div class="member-dates">2016 – 2017</div>
-      </div>
-    </div>
-
-    <div class="member-card">
-      <div class="member-photo"><img src="assets/img/portraits/alumni/chad-talbot.jpeg" alt="Chad Talbot" /></div>
-      <div class="member-body">
-        <div class="member-name">Chad Talbot</div>
-        <div class="member-project-label">Project</div>
-        <div class="member-project">Biology majors' acceptance of evolution</div>
-        <div class="member-dates">2018 – 2020</div>
-      </div>
-    </div>
-
-    <!-- Add more photo cards here as outreach photos come in -->
-
-  </div>
-</div>
-
-<!-- ALL ALUMNI NAME LIST -->
-<div class="alumni-list-wrap">
-  <div class="alumni-list-title">All 81 Undergraduate Research Alumni</div>
-  <p class="alumni-note">★ = completed senior thesis or presented research at a scientific meeting</p>
-  <div class="alumni-grid">
-    <div class="alumni-name">Brian Armstrong</div>
-    <div class="alumni-name presented">Natalia Backman</div>
-    <div class="alumni-name presented">James Barber</div>
-    <div class="alumni-name presented">Melanie Barber</div>
-    <div class="alumni-name presented">Corey Barger</div>
-    <div class="alumni-name presented">Chase Barker</div>
-    <div class="alumni-name presented">Stephanie Bartlett</div>
-    <div class="alumni-name presented">Sawyer Baum</div>
-    <div class="alumni-name">Austin Bettridge</div>
-    <div class="alumni-name presented">Nikk Bobo</div>
-    <div class="alumni-name presented">Dalton Brady</div>
-    <div class="alumni-name presented">Nicholas Brian</div>
-    <div class="alumni-name presented">Jacob Burnett</div>
-    <div class="alumni-name presented">Andrew (Charles) Butler</div>
-    <div class="alumni-name presented">Bryson Carrier</div>
-    <div class="alumni-name">Austin Carter</div>
-    <div class="alumni-name">Trevor Chamberlain</div>
-    <div class="alumni-name presented">Jordan Clawson</div>
-    <div class="alumni-name presented">Michael Cookson</div>
-    <div class="alumni-name presented">Jacob Delano</div>
-    <div class="alumni-name presented">Shannon Deurden</div>
-    <div class="alumni-name presented">Robert Erickson</div>
-    <div class="alumni-name presented">Mathew Ethington</div>
-    <div class="alumni-name presented">Louis Eubank</div>
-    <div class="alumni-name presented">Aaron Fairbanks</div>
-    <div class="alumni-name">Aaron Fairbourn</div>
-    <div class="alumni-name presented">Danny Ferguson</div>
-    <div class="alumni-name presented">Dave Fisher</div>
-    <div class="alumni-name presented">Trevor Gatenby</div>
-    <div class="alumni-name">Ashton Godfrey</div>
-    <div class="alumni-name presented">Brian Hatch</div>
-    <div class="alumni-name">Gary Hatch</div>
-    <div class="alumni-name presented">Josh Holmes</div>
-    <div class="alumni-name presented">Emily Hyer</div>
-    <div class="alumni-name presented">Jeremy Jensen</div>
-    <div class="alumni-name presented">Ruben Jimenez</div>
-    <div class="alumni-name presented">Derek Johnson</div>
-    <div class="alumni-name presented">Hayden Kallis</div>
-    <div class="alumni-name presented">Heidi Kipp</div>
-    <div class="alumni-name presented">Karina Kirk Larsen</div>
-    <div class="alumni-name presented">Avery Larsen</div>
-    <div class="alumni-name presented">Jeffrey Leavitt</div>
-    <div class="alumni-name">Xavier Leiva</div>
-    <div class="alumni-name presented">Jake Loveless</div>
-    <div class="alumni-name presented">Jon Lund</div>
-    <div class="alumni-name presented">Jarod Meecham</div>
-    <div class="alumni-name presented">Trevor Millar</div>
-    <div class="alumni-name presented">Dustin Miller</div>
-    <div class="alumni-name presented">CaBri Montero</div>
-    <div class="alumni-name">Baden Morrill</div>
-    <div class="alumni-name presented">Tanner Mortimer</div>
-    <div class="alumni-name presented">Taylor Murphy</div>
-    <div class="alumni-name">Julie Nance</div>
-    <div class="alumni-name presented">Nick Newell</div>
-    <div class="alumni-name">Ammy Nielsen</div>
-    <div class="alumni-name presented">Zach Nielsen</div>
-    <div class="alumni-name">Damilola Ogunbayode</div>
-    <div class="alumni-name">Daniel Oler</div>
-    <div class="alumni-name">Katie Peatross</div>
-    <div class="alumni-name">Charles Pullen</div>
-    <div class="alumni-name presented">Robert Putnam</div>
-    <div class="alumni-name presented">Jake Reed</div>
-    <div class="alumni-name presented">Jacob Robinson</div>
-    <div class="alumni-name presented">Jarom Schow</div>
-    <div class="alumni-name presented">Isaac Seal</div>
-    <div class="alumni-name presented">Adam Simmons</div>
-    <div class="alumni-name">Mike Simons</div>
-    <div class="alumni-name presented">Tyler Smith</div>
-    <div class="alumni-name presented">Kelsey Stone</div>
-    <div class="alumni-name">Joseph Summerhays</div>
-    <div class="alumni-name presented">Chad Talbot</div>
-    <div class="alumni-name presented">Ishaah Talker</div>
-    <div class="alumni-name presented">Samantha Telarroja</div>
-    <div class="alumni-name presented">Mark Tingey</div>
-    <div class="alumni-name">David Tregaskis</div>
-    <div class="alumni-name presented">Mary Vallecillo</div>
-    <div class="alumni-name presented">Ernie Vilela</div>
-    <div class="alumni-name presented">Tabitha Weir</div>
-    <div class="alumni-name presented">Jed Whetten</div>
-    <div class="alumni-name presented">Albert Zylstra</div>
-    <div class="alumni-name presented">Trevor Zobell</div>
   </div>
 </div>
 
