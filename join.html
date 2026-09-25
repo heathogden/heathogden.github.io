@@ -7,14 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#faf8f3;--bg2:#f0ede4;--ink:#1a1a18;--ink2:#4a4a42;--accent:#2d6a4f;--accent2:#52b788;--gold:#c9a84c;--border:rgba(26,26,24,0.12);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    :root{--bg:#f4faf6;--bg2:#e8f2ec;--ink:#1a3f26;--ink2:#555;--accent:#275D38;--accent2:#3a7d52;--gold:#c9a84c;--border:#c3ddc9;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
     .nav-brand span{color:var(--accent);}
 
     /* HERO */
-    .hero{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:5rem 6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .hero{background:linear-gradient(135deg,#1a3f26 0%,#275D38 100%);color:#fff;padding:5rem 6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
     .eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
     .hero h1{font-family:var(--serif);font-size:2.8rem;line-height:1.15;margin-bottom:1.25rem;}
     .hero h1 em{font-style:italic;color:var(--accent2);}
@@ -76,7 +76,7 @@
     .successmsg h3{font-family:var(--serif);font-size:1.4rem;color:var(--accent);margin-bottom:0.5rem;}
     .successmsg p{font-size:0.9rem;color:var(--ink2);}
 
-    footer{background:#0f1f18;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
+    footer{background:#0d2118;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;}
     footer a{color:var(--accent2);text-decoration:none;}
 
     @media(max-width:900px){
@@ -89,7 +89,7 @@
       footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
     }
   
-    nav{position:sticky;top:0;background:rgba(250,248,243,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:200;}
+    nav{position:sticky;top:0;background:rgba(244,250,246,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:200;}
     .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;flex-shrink:0;}
     .nav-brand span{color:var(--accent);}
     .nav-links{display:flex;gap:0;list-style:none;align-items:stretch;}
@@ -105,7 +105,11 @@
     .dropdown a.join-link{color:var(--accent);font-weight:600;}
     .dropdown a.join-link:hover{background:var(--accent);color:#fff;}
     .chevron{font-size:0.6rem;margin-left:0.3rem;opacity:0.6;}
+  
+    .footer-social-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent2);text-decoration:none;font-size:0.875rem;transition:opacity 0.2s;}
+    .footer-social-link:hover{opacity:0.75;}
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
   <nav>
@@ -291,8 +295,9 @@
   </div>
 
   <footer>
-    <span>© Ogden Lab · Utah Valley University</span>
-    <a href="research.html">← Our Research</a>
+  <span>© Ogden Lab · Utah Valley University</span>
+  <a href="https://www.instagram.com/heath.ogden/" target="_blank" rel="noopener" title="Instagram" class="footer-social-link"><i class="bi bi-instagram"></i> @heath.ogden</a>
+  <a href="← Our Research</a>
   </footer>
 
   <script>
@@ -300,7 +305,7 @@
       const w=el.value.trim().split(/\s+/).filter(Boolean).length;
       const d=document.getElementById(id);
       d.textContent=w+' words (aim for '+mn+'–'+mx+')';
-      d.style.color=w>=mn?'#2d6a4f':'#c9a84c';
+      d.style.color=w>=mn?'#275D38':'#c9a84c';
     }
     document.getElementById('appform').addEventListener('submit',async function(e){
       e.preventDefault();
