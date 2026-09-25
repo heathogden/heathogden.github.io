@@ -12,12 +12,7 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;}
 
-nav{position:sticky;top:0;background:rgba(250,248,243,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:100;}
-.nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;}
 .nav-brand span{color:var(--accent);}
-.nav-links{display:flex;gap:1.5rem;list-style:none;}
-.nav-links a{font-size:0.82rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
-.nav-links a:hover{color:var(--accent);}
 
 .page-header{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);color:#fff;padding:5rem 6rem 3.5rem;}
 .page-label{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
@@ -58,7 +53,6 @@ nav{position:sticky;top:0;background:rgba(250,248,243,0.94);backdrop-filter:blur
 .lightbox-close:hover{background:rgba(255,255,255,0.3);}
 .lightbox-caption{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.9);font-size:0.875rem;text-align:center;max-width:650px;background:rgba(0,0,0,0.55);padding:0.6rem 1.2rem;border-radius:4px;line-height:1.5;}
 .lightbox-caption strong{display:block;font-size:0.95rem;margin-bottom:0.1rem;}
-.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
 .lightbox-nav:hover{background:rgba(255,255,255,0.3);}
 .lightbox-prev{left:1rem;}
 .lightbox-next{right:1rem;}
@@ -72,9 +66,25 @@ footer a{color:var(--accent2);text-decoration:none;}
   .gallery{padding:1rem 1rem 3rem;columns:2 160px;}
   .gallery-section{padding:2rem 1rem 0;}
   footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;}
-  .nav-links{gap:0.75rem;}
 }
-</style>
+
+    nav{position:sticky;top:0;background:rgba(250,248,243,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:200;}
+    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;flex-shrink:0;}
+    .nav-brand span{color:var(--accent);}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:stretch;}
+    .nav-links > li{position:relative;display:flex;align-items:center;}
+    .nav-links > li > a,.nav-links > li > span{font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0 0.85rem;height:64px;display:flex;align-items:center;cursor:pointer;transition:color 0.2s;white-space:nowrap;border:none;background:none;font-family:var(--sans);}
+    .nav-links > li > a:hover,.nav-links > li > span:hover,.nav-links > li:hover > span{color:var(--accent);}
+    .nav-links > li > a.active{color:var(--accent);}
+    .dropdown{position:absolute;top:64px;left:0;background:#fff;border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:0 0 4px 4px;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity 0.18s,transform 0.18s;z-index:300;}
+    .nav-links > li:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown a{display:block;font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:0.65rem 1.1rem;letter-spacing:0.03em;border-bottom:1px solid var(--border);transition:background 0.15s,color 0.15s;}
+    .dropdown a:last-child{border-bottom:none;}
+    .dropdown a:hover{background:var(--bg2);color:var(--accent);}
+    .dropdown a.join-link{color:var(--accent);font-weight:600;}
+    .dropdown a.join-link:hover{background:var(--accent);color:#fff;}
+    .chevron{font-size:0.6rem;margin-left:0.3rem;opacity:0.6;}
+  </style>
 </head>
 <body>
 
@@ -82,12 +92,18 @@ footer a{color:var(--accent2);text-decoration:none;}
   <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="people.html">People</a></li>
+    <li>
+      <span>About <span class="chevron">▾</span></span>
+      <div class="dropdown">
+        <a href="about.html">About Dr. Ogden</a>
+        <a href="people.html">Research Team</a>
+        <a href="photos.html" class="active">Lab Photos</a>
+        <a href="join.html" class="join-link">Join the Lab</a>
+      </div>
+    </li>
     <li><a href="research.html">Research</a></li>
     <li><a href="publications.html">Publications</a></li>
     <li><a href="presentations.html">Presentations</a></li>
-    <li><a href="photos.html">Photos</a></li>
-    <li><a href="join.html">Join</a></li>
   </ul>
 </nav>
 
