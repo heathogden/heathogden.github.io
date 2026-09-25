@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art by Ogden | Watercolor · Insects in Watercolor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    /* ── Site tokens (matches rest of site) ── */
+    :root {
+      --bg:#f4faf6; --bg2:#e8f2ec; --ink:#1a3f26; --ink2:#555;
+      --accent:#275D38; --accent2:#3a7d52; --gold:#c9a84c;
+      --border:#c3ddc9;
+      --serif:'Playfair Display',Georgia,serif;
+      --sans:'DM Sans',system-ui,sans-serif;
+      /* Art palette */
+      --art-bg:     #FAFAF8;
+      --art-bg2:    #F2EFE8;
+      --art-ink:    #1A2A1A;
+      --art-ink2:   #4a5244;
+      --art-ochre:  #B5651D;
+      --art-border: #D8D2C2;
+      --art-mid:    #3D5C3F;
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--sans); background:var(--art-bg); color:var(--art-ink); line-height:1.7; }
+
+    /* ── Nav (identical to rest of site) ── */
+    nav{position:sticky;top:0;background:rgba(244,250,246,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;z-index:200;}
+    .nav-brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);text-decoration:none;flex-shrink:0;}
+    .nav-brand span{color:var(--accent);}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:stretch;}
+    .nav-links > li{position:relative;display:flex;align-items:center;}
+    .nav-links > li > a,.nav-links > li > span{font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;padding:0 0.85rem;height:64px;display:flex;align-items:center;cursor:pointer;transition:color 0.2s;white-space:nowrap;border:none;background:none;font-family:var(--sans);}
+    .nav-links > li > a:hover,.nav-links > li > span:hover,.nav-links > li:hover > span{color:var(--accent);}
+    .nav-links > li > a.active{color:var(--accent);}
+    .dropdown{position:absolute;top:64px;left:0;background:#fff;border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:0 0 4px 4px;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity 0.18s,transform 0.18s;z-index:300;}
+    .nav-links > li:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown a{display:block;font-size:0.8rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:0.65rem 1.1rem;letter-spacing:0.03em;border-bottom:1px solid var(--border);transition:background 0.15s,color 0.15s;}
+    .dropdown a:last-child{border-bottom:none;}
+    .dropdown a:hover{background:var(--bg2);color:var(--accent);}
+    .dropdown a.join-link{color:var(--accent);font-weight:600;}
+    .dropdown a.join-link:hover{background:var(--accent);color:#fff;}
+    .chevron{font-size:0.6rem;margin-left:0.3rem;opacity:0.6;}
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      background: var(--art-ink);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: var(--art-ink);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #0f1a10 0%, #1A2A1A 50%, #2a3a2a 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+    }
+    .hero-placeholder-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    .hero-placeholder-text {
+      color: rgba(255,255,255,0.2);
+      font-family: var(--serif); font-style: italic; font-size: 0.9rem;
+    }
+    .hero-overlay {
+      position: relative; z-index: 2;
+      padding: 3rem 6rem 4rem;
+      background: linear-gradient(transparent, rgba(10,18,10,0.88) 40%);
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 600; color: #fff;
+      line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .hero-sub {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.1rem; color: rgba(255,255,255,0.65);
+      font-weight: 400;
+    }
+    /* ── Hint bar ── */
+    .hero-hint {
+      background: var(--art-ochre); color: #fff;
+      font-size: 0.78rem; font-weight: 500; padding: 0.5rem 6rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-hint a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ── Section wrappers ── */
+    .section { padding: 5rem 6rem; }
+    .section.tinted { background: var(--art-bg2); }
+    .section-title {
+      font-family: var(--serif); font-size: 1.75rem;
+      color: var(--art-mid); margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--art-border);
+    }
+
+    /* ── Statement ── */
+    .statement-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .statement-text {
+      font-family: var(--serif); font-size: 1.05rem;
+      font-style: italic; line-height: 1.85; color: var(--art-ink);
+      border-left: 3px solid var(--art-ochre);
+      padding-left: 1.75rem;
+    }
+    .statement-text p + p { margin-top: 1.25rem; }
+    .bio-wrap { }
+    .bio-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      color: var(--art-ink2); margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+    .bio-text { font-size: 0.9rem; color: var(--art-ink2); font-weight: 300; line-height: 1.8; }
+    .bio-text p + p { margin-top: 1rem; }
+
+    /* ── Gallery ── */
+    .gallery-intro { font-size: 0.9rem; color: var(--art-ink2); margin-bottom: 2rem; max-width: 60ch; }
+    .gallery-masonry {
+      columns: 3 280px; gap: 1.5rem;
+    }
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%; display: block; border: 1px solid var(--art-border);
+    }
+    /* Placeholder for missing images */
+    .art-placeholder {
+      width: 100%; background: var(--art-bg2);
+      border: 1px solid var(--art-border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2.5rem 1.5rem; text-align: center;
+      gap: 0.5rem;
+    }
+    .art-placeholder.tall  { aspect-ratio: 3/4; }
+    .art-placeholder.wide  { aspect-ratio: 4/3; }
+    .art-placeholder.sq    { aspect-ratio: 1; }
+    .art-placeholder.port  { aspect-ratio: 9/12; }
+    .art-placeholder-icon  { font-size: 2rem; opacity: 0.25; }
+    .art-placeholder-title { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--art-ink); }
+    .art-placeholder-latin { font-family: var(--serif); font-style: italic; font-size: 0.78rem; color: var(--art-ink2); }
+    .art-placeholder-note  { font-size: 0.68rem; color: var(--art-ink2); opacity: 0.5; margin-top: 0.25rem; }
+    /* Caption below image or placeholder */
+    .gallery-caption {
+      padding: 0.6rem 0 0;
+      display: flex; justify-content: space-between; align-items: baseline;
+    }
+    .gallery-caption-title {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.88rem; color: var(--art-ink);
+    }
+    .gallery-caption-meta {
+      font-size: 0.72rem; color: var(--art-ink2); white-space: nowrap; margin-left: 1rem;
+    }
+    .sold-badge {
+      font-size: 0.65rem; font-weight: 600; color: #fff;
+      background: var(--art-ink2); padding: 1px 6px; border-radius: 2px;
+      letter-spacing: 0.05em; margin-left: 0.5rem; vertical-align: middle;
+    }
+    /* Group labels within gallery */
+    .gallery-group-label {
+      break-inside: avoid; margin-bottom: 0.5rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      color: var(--art-ochre); text-transform: uppercase;
+      padding-top: 0.5rem;
+    }
+
+    /* ── The Orders ── */
+    .orders-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .orders-text h3 { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--art-ink); }
+    .orders-text p { font-size: 0.9rem; color: var(--art-ink2); font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
+    .book-card {
+      background: var(--art-bg); border: 1px solid var(--art-border);
+      padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .book-cover {
+      width: 120px; flex-shrink: 0;
+      background: var(--art-bg2); border: 1px solid var(--art-border);
+      aspect-ratio: 6/8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; opacity: 0.3;
+    }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .book-info h4 { font-family: var(--serif); font-style: italic; font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .book-info p { font-size: 0.82rem; color: var(--art-ink2); font-weight: 300; margin-bottom: 0.25rem; }
+    .book-info .isbn { font-size: 0.72rem; color: var(--art-ink2); opacity: 0.65; font-family: monospace; }
+
+    /* ── Exhibitions ── */
+    .expo-group + .expo-group { margin-top: 2.5rem; }
+    .expo-group-title {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--art-ochre);
+      margin-bottom: 1rem;
+    }
+    .expo-list { display: flex; flex-direction: column; gap: 0; }
+    .expo-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1rem; padding: 0.75rem 0;
+      border-bottom: 1px solid var(--art-border);
+      align-items: baseline;
+    }
+    .expo-year { font-size: 0.8rem; font-weight: 600; color: var(--art-mid); }
+    .expo-body {}
+    .expo-title { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--art-ink); }
+    .expo-venue { font-size: 0.8rem; color: var(--art-ink2); font-weight: 300; }
+    .expo-piece { font-size: 0.78rem; color: var(--art-ink2); font-style: italic; }
+    .expo-upcoming {
+      display: inline-block; font-size: 0.65rem; font-weight: 600;
+      background: var(--art-mid); color: #fff;
+      padding: 1px 7px; border-radius: 2px; margin-left: 6px;
+      vertical-align: middle; letter-spacing: 0.04em;
+    }
+    .expo-press {
+      margin-top: 1.5rem; padding: 1rem 1.25rem;
+      background: var(--art-bg2); border-left: 3px solid var(--art-ochre);
+      font-size: 0.85rem; color: var(--art-ink2); font-weight: 300;
+    }
+    .expo-press strong { color: var(--art-ink); }
+
+    /* ── Workshops ── */
+    .workshop-list { display: flex; flex-direction: column; gap: 0; }
+    .workshop-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1rem; padding: 0.65rem 0;
+      border-bottom: 1px solid var(--art-border);
+      font-size: 0.875rem;
+    }
+    .workshop-year { color: var(--art-mid); font-weight: 600; font-size: 0.8rem; }
+    .workshop-body { color: var(--art-ink2); font-weight: 300; }
+    .workshop-body strong { color: var(--art-ink); font-weight: 500; }
+
+    /* ── Contact ── */
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center;
+    }
+    .contact-statement {
+      font-family: var(--serif); font-size: 1.2rem;
+      line-height: 1.7; color: var(--art-ink);
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      border: 1.5px solid var(--art-border);
+      text-decoration: none; color: var(--art-ink);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-link:hover { border-color: var(--art-ochre); background: var(--art-bg2); }
+    .contact-link-icon { font-size: 1.4rem; color: var(--art-ochre); }
+    .contact-link-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--art-ink2); }
+    .contact-link-value { font-family: var(--serif); font-size: 1rem; color: var(--art-ink); }
+
+    /* ── Footer ── */
+    footer{background:#0d2118;color:rgba(255,255,255,0.55);padding:2rem 6rem;font-size:0.875rem;display:flex;justify-content:space-between;align-items:center;}
+    footer a{color:#3a7d52;text-decoration:none;}
+    footer a:hover{color:#52b788;}
+    .footer-social-link{display:inline-flex;align-items:center;gap:0.4rem;color:#3a7d52;text-decoration:none;}
+
+    /* ── Responsive ── */
+    @media(max-width:900px){
+      .section{padding:3rem 1.5rem;}
+      .hero-overlay,.hero-hint{padding-left:1.5rem;padding-right:1.5rem;}
+      .statement-wrap,.orders-wrap,.contact-wrap{grid-template-columns:1fr;gap:2rem;}
+      .gallery-masonry{columns:2 200px;}
+      footer{padding:2rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center;}
+      .nav-links > li > a,.nav-links > li > span{padding:0 0.55rem;font-size:0.72rem;}
+    }
+    @media(max-width:560px){
+      .gallery-masonry{columns:1;}
+      .hero-title{font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="nav-brand" href="index.html">Ogden <span>Lab</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <span>About <span class="chevron">▾</span></span>
+      <div class="dropdown">
+        <a href="about.html">About Dr. Ogden</a>
+        <a href="people.html">Research Team</a>
+        <a href="photos.html">Lab Photos</a>
+        <a href="join.html" class="join-link">Join the Lab</a>
+      </div>
+    </li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+    <li><a href="art.html" class="active">Art</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-img">
+    <!-- Replace with: <img src="assets/img/art/Dynastes.jpg" class="hero-placeholder-img" alt="Dynastes grantii — Western Hercules Beetle"> -->
+    <div class="hero-placeholder">
+      <span class="hero-placeholder-text">[ Dynastes.jpg — Western Hercules Beetle ]</span>
+    </div>
+  </div>
+  <div class="hero-overlay">
+    <div class="hero-eyebrow">Heath Ogden · Orem, Utah</div>
+    <h1 class="hero-title">Art by Ogden</h1>
+    <p class="hero-sub">Watercolor · Insects in Watercolor</p>
+  </div>
+</div>
+<div class="hero-hint">
+  <i class="bi bi-instagram"></i>
+  Follow new work at <a href="https://instagram.com/artbyogden" target="_blank" rel="noopener">@artbyogden</a>
+</div>
+
+<!-- ═══ STATEMENT & BIO ═══ -->
+<div class="section">
+  <div class="statement-wrap">
+    <div class="statement-text">
+      <p>Before 2025, I'd only done a handful of watercolor paintings — small attempts at landscapes and sunsets — until one day it occurred to me to try painting bugs. After all, I'm an evolutionary biologist and entomologist by training. Since then, watercolor has become a true passion, and a way to bring my scientific work into closer conversation with my artistic eye.</p>
+      <p><em>The Orders: Insects in Watercolor</em> is the first major project to come out of that turn. There are thirty-one orders of insects — the major branches of the insect family tree — and I set out to paint a representative species from each, then assembled them into a book of the same title. All insects share a common ancestor, and over hundreds of millions of years they have diversified into the staggering variety we see today.</p>
+      <p>There are more insects on Earth than any other kind of animal, but only a handful — butterflies, beetles, bees — get much attention from artists. I want to make space for the rest. From the humble housefly to the majestic mantid, my hope is that these paintings help others see the small, overlooked beauty that surrounds us every day.</p>
+    </div>
+    <div class="bio-wrap">
+      <div class="bio-label">About the artist</div>
+      <div class="bio-text">
+        <p>Heath Ogden is a watercolor painter and evolutionary biologist based in Orem, Utah. He is a tenured professor and Chair of the Department of Biology at Utah Valley University, where his research uses phylogenetics and bioinformatics to study the evolution of insects, including the origin and evolution of insect flight.</p>
+        <p>Though art has interested him since high school, his serious watercolor practice began in 2025, when he set out to paint a representative species from every order of insect. That project became <em>The Orders: Insects in Watercolor</em>, a self-published hardcover book and the basis for his first solo exhibition at the Salt Lake City Public Library in spring 2026, with a second solo opening at the Provo City Library in March 2027.</p>
+        <p>He works primarily in watercolor on paper, drawn to the way the medium handles iridescence, translucency, and the fine architectural detail of insect bodies. He is a member of the Utah Watercolor Society.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GALLERY ═══ -->
+<div class="section tinted">
+  <h2 class="section-title">Works</h2>
+  <p class="gallery-intro">Watercolor on paper. Originals and prints available — contact via <a href="https://instagram.com/artbyogden" target="_blank" rel="noopener">Instagram</a> or <a href="mailto:heath.ogden@gmail.com">email</a>.</p>
+
+  <div class="gallery-masonry">
+
+    <!-- Feature Pieces -->
+    <div class="gallery-item">
+      <div class="gallery-group-label">Feature Pieces</div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Dynastes.jpg" alt="Dynastes grantii — Western Hercules Beetle"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🪲</span>
+        <span class="art-placeholder-title">Western Hercules Beetle</span>
+        <span class="art-placeholder-latin"><em>Dynastes grantii</em></span>
+        <span class="art-placeholder-note">Dynastes.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title"><em>Dynastes grantii</em></span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Beetles_in_Red.jpg" alt="Beetles in Red"> -->
+      <div class="art-placeholder wide">
+        <span class="art-placeholder-icon">🪲</span>
+        <span class="art-placeholder-title">Beetles in Red</span>
+        <span class="art-placeholder-note">Beetles_in_Red.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Beetles in Red</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Sunset_Moth.jpg" alt="Sunset Moth"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🦋</span>
+        <span class="art-placeholder-title">Sunset Moth</span>
+        <span class="art-placeholder-latin"><em>Chrysiridia rhipheus</em></span>
+        <span class="art-placeholder-note">Sunset_Moth.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Sunset Moth</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Scarabaeus.jpg" alt="Scarabaeus sacer"> -->
+      <div class="art-placeholder sq">
+        <span class="art-placeholder-icon">🪲</span>
+        <span class="art-placeholder-title">Sacred Scarab</span>
+        <span class="art-placeholder-latin"><em>Scarabaeus sacer</em></span>
+        <span class="art-placeholder-note">Scarabaeus.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title"><em>Scarabaeus sacer</em></span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Goliathus.jpg" alt="Goliathus goliathus"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🪲</span>
+        <span class="art-placeholder-title">Goliath Beetle</span>
+        <span class="art-placeholder-latin"><em>Goliathus goliathus</em></span>
+        <span class="art-placeholder-note">Goliathus.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title"><em>Goliathus goliathus</em></span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <!-- The Orders series -->
+    <div class="gallery-item">
+      <div class="gallery-group-label" style="margin-top:1rem;">The Orders Series</div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Coleoptera_SIG.jpg" alt="Coleoptera"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🪲</span>
+        <span class="art-placeholder-title">Coleoptera</span>
+        <span class="art-placeholder-latin">Beetles</span>
+        <span class="art-placeholder-note">Coleoptera_SIG.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Coleoptera</span>
+        <span class="gallery-caption-meta">from <em>The Orders</em></span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Lepidoptera_SIG.jpg" alt="Lepidoptera"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🦋</span>
+        <span class="art-placeholder-title">Lepidoptera</span>
+        <span class="art-placeholder-latin">Butterflies &amp; Moths</span>
+        <span class="art-placeholder-note">Lepidoptera_SIG.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Lepidoptera</span>
+        <span class="gallery-caption-meta">from <em>The Orders</em></span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Mantodea_SIG.jpg" alt="Mantodea"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🪳</span>
+        <span class="art-placeholder-title">Mantodea</span>
+        <span class="art-placeholder-latin">Mantids</span>
+        <span class="art-placeholder-note">Mantodea_SIG.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Mantodea</span>
+        <span class="gallery-caption-meta">from <em>The Orders</em></span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Odonata_SIG.jpg" alt="Odonata"> -->
+      <div class="art-placeholder wide">
+        <span class="art-placeholder-icon">🦟</span>
+        <span class="art-placeholder-title">Odonata</span>
+        <span class="art-placeholder-latin">Dragonflies &amp; Damselflies</span>
+        <span class="art-placeholder-note">Odonata_SIG.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Odonata</span>
+        <span class="gallery-caption-meta">from <em>The Orders</em></span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/BeetlesPage.jpg" alt="Beetles — from The Orders"> -->
+      <div class="art-placeholder wide">
+        <span class="art-placeholder-icon">🪲</span>
+        <span class="art-placeholder-title">Beetles — book spread</span>
+        <span class="art-placeholder-note">BeetlesPage.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Beetles</span>
+        <span class="gallery-caption-meta">from <em>The Orders</em></span>
+      </div>
+    </div>
+
+    <!-- Pollinators & Wings -->
+    <div class="gallery-item">
+      <div class="gallery-group-label" style="margin-top:1rem;">Pollinators &amp; Wings</div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Cuckoo_Wasp.jpg" alt="Cuckoo Wasp"> -->
+      <div class="art-placeholder sq">
+        <span class="art-placeholder-icon">🐝</span>
+        <span class="art-placeholder-title">Cuckoo Wasp</span>
+        <span class="art-placeholder-note">Cuckoo_Wasp.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Cuckoo Wasp</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Garden_Tiger_Moth.jpg" alt="Garden Tiger Moth"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🦋</span>
+        <span class="art-placeholder-title">Garden Tiger Moth</span>
+        <span class="art-placeholder-note">Garden_Tiger_Moth.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Garden Tiger Moth</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Woolly_Bear_Moth.jpg" alt="Woolly Bear Moth"> -->
+      <div class="art-placeholder sq">
+        <span class="art-placeholder-icon">🦋</span>
+        <span class="art-placeholder-title">Woolly Bear Moth</span>
+        <span class="art-placeholder-note">Woolly_Bear_Moth.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Woolly Bear Moth</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Jersey_Tiger_Moth.jpg" alt="Jersey Tiger Moth"> -->
+      <div class="art-placeholder sq">
+        <span class="art-placeholder-icon">🦋</span>
+        <span class="art-placeholder-title">Jersey Tiger Moth</span>
+        <span class="art-placeholder-note">Jersey_Tiger_Moth.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Jersey Tiger Moth</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Bumble_Bee.jpg" alt="Bumble Bee Playing"> -->
+      <div class="art-placeholder sq">
+        <span class="art-placeholder-icon">🐝</span>
+        <span class="art-placeholder-title">Bumble Bee Playing</span>
+        <span class="art-placeholder-note">Bumble_Bee.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title">Bumble Bee Playing</span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <!-- Aquatic & Other -->
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Chironomus.jpg" alt="Chironomus"> -->
+      <div class="art-placeholder wide">
+        <span class="art-placeholder-icon">🦟</span>
+        <span class="art-placeholder-title">Chironomus</span>
+        <span class="art-placeholder-latin">Non-biting Midge</span>
+        <span class="art-placeholder-note">Chironomus.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title"><em>Chironomus</em></span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <!-- Utah Botanicals -->
+    <div class="gallery-item">
+      <div class="gallery-group-label" style="margin-top:1rem;">Utah Botanicals</div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Clay_Phacelia.jpg" alt="Clay Phacelia"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🌸</span>
+        <span class="art-placeholder-title">Clay Phacelia</span>
+        <span class="art-placeholder-latin"><em>Phacelia argillacea</em></span>
+        <span class="art-placeholder-note">Clay_Phacelia.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title"><em>Phacelia argillacea</em></span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- <img src="assets/img/art/Deseret_Milkvetch.jpg" alt="Deseret Milkvetch"> -->
+      <div class="art-placeholder tall">
+        <span class="art-placeholder-icon">🌿</span>
+        <span class="art-placeholder-title">Deseret Milkvetch</span>
+        <span class="art-placeholder-latin"><em>Astragalus desereticus</em></span>
+        <span class="art-placeholder-note">Deseret_Milkvetch.jpg</span>
+      </div>
+      <div class="gallery-caption">
+        <span class="gallery-caption-title"><em>Astragalus desereticus</em></span>
+        <span class="gallery-caption-meta">Watercolor</span>
+      </div>
+    </div>
+
+  </div><!-- /gallery-masonry -->
+</div>
+
+<!-- ═══ THE ORDERS & BOOK ═══ -->
+<div class="section">
+  <h2 class="section-title">The Orders: Insects in Watercolor</h2>
+  <div class="orders-wrap">
+    <div class="orders-text">
+      <h3>The Project</h3>
+      <p>There are thirty-one orders of insects — the major branches of the insect family tree. Each order represents a group of creatures that share a common ancestor and a common body plan, shaped by hundreds of millions of years of evolution. <em>The Orders</em> is a painting for every one of them.</p>
+      <p>A phylogenetic tree of the insect orders accompanies the paintings, showing the evolutionary relationships between groups. Each branch tip is one of the orders. The project began in 2025 and became the basis for solo exhibitions at the Salt Lake City Public Library (2026) and the Provo City Library (March 2027).</p>
+      <h3 style="margin-top:1.5rem;">The Book</h3>
+      <p>All thirty-one paintings, the phylogenetic tree, and accompanying text are collected in a hardcover book. The first printing of 100 sold out; a second printing of 200 was produced by QinPrinting. Edited by AJ Ogden.</p>
+    </div>
+    <div>
+      <div class="book-card">
+        <!-- Replace div below with: <img src="assets/img/art/TheOrders_cover.jpg"> -->
+        <div class="book-cover">📖</div>
+        <div class="book-info">
+          <h4>The Orders: Insects in Watercolor</h4>
+          <p>T. H. Ogden. Edited by AJ Ogden.</p>
+          <p>Lulu Press, 2025. Hardcover.</p>
+          <p class="isbn">ISBN 978-1-300-03932-7</p>
+          <p style="margin-top:0.75rem;font-size:0.82rem;color:var(--art-ink2);">To inquire about purchasing, contact via <a href="https://instagram.com/artbyogden" target="_blank" rel="noopener" style="color:var(--art-ochre);">Instagram</a> or <a href="mailto:heath.ogden@gmail.com" style="color:var(--art-ochre);">email</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ EXHIBITIONS ═══ -->
+<div class="section tinted">
+  <h2 class="section-title">Exhibitions &amp; Shows</h2>
+
+  <div class="expo-group">
+    <div class="expo-group-title">Solo Exhibitions</div>
+    <div class="expo-list">
+      <div class="expo-row">
+        <div class="expo-year">2027<span class="expo-upcoming">upcoming</span></div>
+        <div class="expo-body">
+          <div class="expo-title"><em>The Orders: Insects in Watercolor</em></div>
+          <div class="expo-venue">Provo City Library · Provo, UT · March 2027</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title"><em>The Orders: Insects in Watercolor</em></div>
+          <div class="expo-venue">Salt Lake City Public Library · Salt Lake City, UT · Spring 2026 · with artist talk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="expo-group">
+    <div class="expo-group-title">Juried &amp; Group Exhibitions</div>
+    <div class="expo-list">
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">UNPS <em>Ephemeral</em></div>
+          <div class="expo-venue">Swaner EcoCenter, Park City, UT · Sep 12 – Nov 29, 2026</div>
+          <div class="expo-piece"><em>Clay Phacelia</em> and <em>Deseret Milkvetch</em></div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">Utah Summer Art Showcase</div>
+          <div class="expo-venue">Covey Center for the Arts (Eccles Art Gallery), Provo, UT · Jul 3 – Sep 2, 2026</div>
+          <div class="expo-piece"><em>Beetles in Red</em></div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">Utah Watercolor Society Traveling Exhibition</div>
+          <div class="expo-venue">Multiple venues · 2026</div>
+          <div class="expo-piece"><em>Dynastes grantii</em></div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">UWS Spring Open Exhibition</div>
+          <div class="expo-venue">Gene Nelson Attic at Provo City Library · May 8 – Jun 12, 2026</div>
+          <div class="expo-piece"><em>Dynastes grantii</em></div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">BT Arts Art Show</div>
+          <div class="expo-venue">SCERA Gallery, Orem, UT · Jun 16, 2026</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2025</div>
+        <div class="expo-body">
+          <div class="expo-title"><em>Pollinators</em></div>
+          <div class="expo-venue">Utah Watercolor Society at Red Butte Garden, Salt Lake City, UT · 2025</div>
+          <div class="expo-piece">Cuckoo Wasp, Garden Tiger Moth, Woolly Bear Moth, Jersey Tiger Moth</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2025</div>
+        <div class="expo-body">
+          <div class="expo-title"><em>Healing Waters: Restoring Our Relationship with Utah Lake</em></div>
+          <div class="expo-venue">UVU Museum of Art at Lakemount · May 20 – Sep 27, 2025</div>
+          <div class="expo-piece"><em>Chironomus</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="expo-group">
+    <div class="expo-group-title">Art Festivals</div>
+    <div class="expo-list">
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">Entomological Society of America Annual Meeting</div>
+          <div class="expo-venue">Columbus, OH · Nov 8–11, 2026 · Booth AR6</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">Ogden Arts Festival</div>
+          <div class="expo-venue">Ogden, UT · Jul 18–19, 2026 · Juried</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">America's Freedom Festival Fine Art Show</div>
+          <div class="expo-venue">Provo, UT · Jul 3–4, 2026 · Juried</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">Taste of Orem &amp; Orem Farmers Market</div>
+          <div class="expo-venue">Orem, UT · recurring 2026</div>
+        </div>
+      </div>
+      <div class="expo-row">
+        <div class="expo-year">2026</div>
+        <div class="expo-body">
+          <div class="expo-title">Art in the Park</div>
+          <div class="expo-venue">West Jordan, UT · May 2, 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="expo-press">
+    <strong>Press:</strong> Fox 13 News Utah, <em>Good Day Utah</em> — live segment on <em>The Orders</em> and the BugFest workshop · Aug 5, 2025
+  </div>
+</div>
+
+<!-- ═══ WORKSHOPS ═══ -->
+<div class="section">
+  <h2 class="section-title">Workshops &amp; Public Programs</h2>
+  <div class="workshop-list">
+    <div class="workshop-row">
+      <div class="workshop-year">2026</div>
+      <div class="workshop-body"><strong>Science and Art: Insects in Watercolor</strong> — Entrada Institute Sunset Series, Torrey, UT</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2026</div>
+      <div class="workshop-body"><strong>Insects in Watercolor</strong> — mini-workshop, ESA Annual Meeting, Columbus, OH</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2026</div>
+      <div class="workshop-body"><strong>Watercolor Workshop</strong> — Greystone Event Center, Monroe, UT</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2026</div>
+      <div class="workshop-body"><strong>Watercolor Workshops</strong> — The Compass, Provo, UT (Jan &amp; Apr)</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2026</div>
+      <div class="workshop-body"><strong>Insects in Watercolor: Combining Art and Science</strong> — BYU, for elementary education faculty and students</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2025</div>
+      <div class="workshop-body"><strong>Watercolor Workshop</strong> — Springville Museum of Art, Springville, UT</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2025</div>
+      <div class="workshop-body"><strong>Watercolor Workshop</strong> — UVU College of Science "Science Night"</div>
+    </div>
+    <div class="workshop-row">
+      <div class="workshop-year">2025</div>
+      <div class="workshop-body"><strong>Insect Watercolor Workshop</strong> — BugFest, Natural History Museum of Utah, Salt Lake City</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<div class="section tinted">
+  <h2 class="section-title">Get in Touch</h2>
+  <div class="contact-wrap">
+    <div class="contact-statement">
+      If you're interested in a piece you see here, a commission, or just want to talk about insects — I'd love to hear from you.
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://instagram.com/artbyogden" target="_blank" rel="noopener">
+        <span class="contact-link-icon"><i class="bi bi-instagram"></i></span>
+        <span>
+          <div class="contact-link-label">Instagram</div>
+          <div class="contact-link-value">@artbyogden</div>
+        </span>
+      </a>
+      <a class="contact-link" href="mailto:heath.ogden@gmail.com">
+        <span class="contact-link-icon"><i class="bi bi-envelope"></i></span>
+        <span>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">heath.ogden@gmail.com</div>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span>© Art by Ogden · Heath Ogden · Orem, Utah</span>
+  <a href="https://instagram.com/artbyogden" target="_blank" rel="noopener" class="footer-social-link">
+    <i class="bi bi-instagram"></i> @artbyogden
+  </a>
+  <a href="index.html">← Lab Site</a>
+</footer>
+
+</body>
+</html>
