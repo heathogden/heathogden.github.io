@@ -48,53 +48,34 @@
 
     /* ── Hero ── */
     .hero {
-      position: relative;
-      min-height: 72vh;
-      background: var(--art-ink);
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
+      background: #fff;
+      border-bottom: 1px solid var(--art-border);
     }
-    .hero-img {
-      position: absolute; inset: 0;
-      background: var(--art-ink);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(160deg, #0f1a10 0%, #1A2A1A 50%, #2a3a2a 100%);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 0.5rem;
-    }
-    .hero-placeholder-img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
+    .hero-banner {
+      width: 100%;
       display: block;
-    }
-    .hero-placeholder-text {
-      color: rgba(255,255,255,0.2);
-      font-family: var(--serif); font-style: italic; font-size: 0.9rem;
+      max-height: 420px;
+      object-fit: contain;
+      object-position: center;
     }
     .hero-overlay {
-      position: relative; z-index: 2;
-      padding: 3rem 6rem 4rem;
-      background: linear-gradient(transparent, rgba(10,18,10,0.88) 40%);
-      width: 100%;
+      padding: 2rem 6rem 2.5rem;
+      background: #fff;
     }
     .hero-eyebrow {
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(255,255,255,0.5);
-      margin-bottom: 0.75rem;
+      text-transform: uppercase; color: var(--art-ink2);
+      margin-bottom: 0.5rem;
     }
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 600; color: #fff;
-      line-height: 1.15; margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600; color: var(--art-ink);
+      line-height: 1.15; margin-bottom: 0.4rem;
     }
     .hero-sub {
       font-family: var(--serif); font-style: italic;
-      font-size: 1.1rem; color: rgba(255,255,255,0.65);
+      font-size: 1.05rem; color: var(--art-ink2);
       font-weight: 400;
     }
     /* ── Hint bar ── */
@@ -319,9 +300,9 @@
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
-  <div class="hero-img">
-    <img src="assets/img/art/Beetles_in_Red.jpg" class="hero-placeholder-img" alt="Beetles in Red — H. Ogden" style="object-position:center;">
-  </div>
+  <img src="assets/img/art/Orders_Hero_Banner.jpg"
+       class="hero-banner"
+       alt="Watercolors by Heath Ogden of four insects from different orders: an iridescent leaf beetle, an orchid mantis, an Atlas moth, and a rubyspot damselfly.">
   <div class="hero-overlay">
     <div class="hero-eyebrow">Heath Ogden · Orem, Utah</div>
     <h1 class="hero-title">Art by Ogden</h1>
